@@ -1,15 +1,14 @@
 @extends('layouts.app')
 
 @section('title', 'Login - VortexHost')
-
+@section('body_class', 'auth-body')
+@section('hide_header', true)
+@section('hide_footer', true)
 @push('styles')
-<link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 @endpush
 
 @section('content')
-
-<body class="auth-body">
-
+@section('main_class', 'auth-main')
 <!-- VOLTAR -->
 <a href="{{ url('/') }}" class="auth-back" title="Voltar">
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"

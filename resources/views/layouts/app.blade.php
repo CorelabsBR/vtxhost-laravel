@@ -12,16 +12,26 @@
     <link rel="stylesheet" href="{{ asset('css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
     <link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
+
+    @stack('styles')
 </head>
-<body>
 
-@include('partials.header')
+<body class="@yield('body_class')">
 
-<main>
+@if (!View::hasSection('hide_header'))
+    @include('partials.header')
+@endif
+
+<main class="@yield('main_class')">
     @yield('content')
 </main>
 
-@include('partials.footer')
+@if (!View::hasSection('hide_footer'))
+    @include('partials.footer')
+@endif
+
+@stack('scripts')
 
 </body>
 </html>
