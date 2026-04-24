@@ -56,7 +56,7 @@
                 <div class="svc-divider"></div>
                 <div class="svc-footer">
                     <p class="svc-price">a partir de <span>R$32</span>/mês</p>
-                    <a href="{{ url('/host') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
+                    <a href="{{ url('/web') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
                 </div>
             </div>
 

@@ -8,7 +8,7 @@
 
             <ul class="nav-links">
                 <li><a href="{{ url('/') }}">Início</a></li>
-                <li><a href="{{ url('/host') }}">Hospedagem</a></li>
+                <li><a href="{{ url('/games') }}">Hospedagem de Jogos</a></li>
                 <li><a href="{{ url('/vps') }}">VPS</a></li>
                 <li><a href="{{ url('/cpanel') }}">Hospedagem Web</a></li>
             </ul>

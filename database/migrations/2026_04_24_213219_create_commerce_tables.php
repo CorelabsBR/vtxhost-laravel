@@ -14,15 +14,15 @@ return new class extends Migration {
             $table->decimal('preco', 10, 2);
             $table->foreignId('categoria_id')->constrained('categoria_prod');
             $table->foreignId('jogo_id')->nullable()->constrained('jogos_prod');
-            $table->unsignedInteger('plan')->nullable();
             $table->foreignId('local_id')->nullable()->constrained('location_prod');
+            $table->unsignedInteger('plan')->nullable();
             $table->boolean('ddos_protection')->default(false);
             $table->boolean('featured')->default(false);
             $table->integer('sort_order')->default(1);
             $table->timestamp('criado_em')->useCurrent();
             $table->timestamp('atualizado_em')->useCurrent()->useCurrentOnUpdate();
 
-            $table->foreign('plan')->references('plan')->on('plans')->nullOnDelete();
+            //$table->foreign('plan')->references('plan')->on('plans')->nullOnDelete();
             $table->index('plan', 'idx_products_plan');
         });
 

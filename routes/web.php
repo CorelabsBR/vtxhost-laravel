@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WebHostingController;
+use App\Http\Controllers\GameHostingController;
 
 Route::get('/', function () {
     return view('home');
@@ -32,3 +34,14 @@ Route::get('/cliente', function () {
 Route::get('/recuperar-senha', function () {
     return view('auth.forgot-password');
 })->name('password.request');
+
+Route::get('/web', [WebHostingController::class, 'index'])->name('web');
+
+Route::get('/carrinho/adicionar/{produto}', function ($produto) {
+    return redirect()
+        ->route('web')
+        ->with('success', 'Produto adicionado ao carrinho.');
+})->name('carrinho.add');
+
+Route::get('/games', [GameHostingController::class, 'index'])->name('games.index');
+Route::get('/games/{jogo}', [GameHostingController::class, 'show'])->name('games.show');
