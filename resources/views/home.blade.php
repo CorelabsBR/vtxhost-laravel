@@ -1,0 +1,94 @@
+@extends('layouts.app')
+
+@section('title', 'Vortex Host')
+
+@section('content')
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container">
+        <div class="hero-eyebrow">
+            <span class="pill pill-accent">VortexHost · Infraestrutura Premium</span>
+        </div>
+
+        <h1 class="hero-title">Hospedagem de<br>Outro Nível</h1>
+
+        <p class="hero-subtitle">
+            Jogos, sites e VPS com hardware de ponta, anti-DDoS incluso e presença
+            no Brasil e Canadá.
+        </p>
+
+        <div class="hero-cta">
+            <a class="btn btn-primary btn-lg" href="{{ url('/host') }}">COMEÇAR AGORA</a>
+            <a class="btn btn-ghost btn-lg" href="{{ url('/vps') }}">Ver VPS →</a>
+        </div>
+    </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services-section">
+    <div class="container">
+
+        <div class="section-head center">
+            <h2 class="section-title">Escolha o serviço ideal</h2>
+            <p class="section-sub">Infraestrutura de alta performance para cada necessidade.</p>
+        </div>
+
+        <div class="services-grid">
+
+            <div class="svc-card">
+                <div class="svc-icon">🌐</div>
+                <p class="svc-tag">Hospedagem Web</p>
+                <h3 class="svc-title">Sites & Aplicações</h3>
+                <p class="svc-desc">Hospedagem otimizada para WordPress, lojas virtuais e sistemas web com uptime garantido.</p>
+                <ul class="svc-feats">
+                    <li>SSL gratuito incluído</li>
+                    <li>Painel cPanel intuitivo</li>
+                    <li>Suporte 24/7</li>
+                </ul>
+                <div class="svc-divider"></div>
+                <div class="svc-footer">
+                    <p class="svc-price">a partir de <span>R$32</span>/mês</p>
+                    <a href="{{ url('/host') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
+                </div>
+            </div>
+
+            <div class="svc-card">
+                <div class="svc-icon">⚡</div>
+                <p class="svc-tag">VPS Premium</p>
+                <h3 class="svc-title">Servidores Virtuais</h3>
+                <p class="svc-desc">VPS com NVMe, anti-DDoS avançado e acesso root completo. Brasil e Canadá.</p>
+                <ul class="svc-feats">
+                    <li>NVMe de alta velocidade</li>
+                    <li>Anti-DDoS incluso</li>
+                    <li>Acesso root completo</li>
+                </ul>
+                <div class="svc-divider"></div>
+                <div class="svc-footer">
+                    <p class="svc-price">a partir de <span>R$50</span>/mês</p>
+                    <a href="{{ url('/vps') }}" class="btn btn-primary btn-sm">Ver Planos →</a>
+                </div>
+            </div>
+
+            <div class="svc-card">
+                <div class="svc-icon">🎮</div>
+                <p class="svc-tag">Servidores de Jogos</p>
+                <h3 class="svc-title">Jogos Online</h3>
+                <p class="svc-desc">Crie histórias incríveis em seus jogos favoritos.</p>
+                <ul class="svc-feats">
+                    <li>Gerenciador de arquivos</li>
+                    <li>E-mails profissionais</li>
+                    <li>Backups automáticos</li>
+                </ul>
+                <div class="svc-divider"></div>
+                <div class="svc-footer">
+                    <p class="svc-price">a partir de <span>R$9</span>/mês</p>
+                    <a href="{{ url('/cpanel') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+@endsection
