@@ -3,6 +3,13 @@
 @section('title', 'Vortex Host')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+<link rel="stylesheet" href="{{ asset('css/header.css') }}">
+<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+<link rel="stylesheet" href="{{ asset('css/responsive.css') }}">
+
+@stack('styles')
 
 <!-- HERO -->
 <section class="hero">
