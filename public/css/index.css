@@ -1,23 +1,22 @@
 /* ── Hero (Homepage) ────────────────────────────────── */
 .hero {
-    min-height: 92vh;
+    min-height: 100svh;           /* ocupa a tela inteira em qualquer resolução */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    justify-content: center;      /* centraliza verticalmente sempre */
     text-align: left;
-    padding: 4rem 0 6rem;
+    padding: clamp(4rem, 10vh, 8rem) 0;
     position: relative;
     overflow: hidden;
 
-    /* A sua única imagem de fundo */
+    background-color: #000;
     background-image: url('../img/index_fundo2.png');
     background-repeat: no-repeat;
-    
-    /* Aplica a nova animação de zoom e flutuação */
     animation: bg-zoom-slow 120s ease-in-out infinite;
 }
 
-/* O overlay escuro para leitura do texto (MANTIDO) */
+/* Overlay escuro */
 .hero::before {
     content: '';
     position: absolute;
@@ -26,122 +25,143 @@
     z-index: 0;
     background:
         linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%),
-        radial-gradient(ellipse 65% 55% at 50% -5%,  rgba(0,255,100,.1), transparent 65%),
-        radial-gradient(ellipse 40% 35% at 85% 80%,  rgba(0,255,100,.05),  transparent 65%);
+        radial-gradient(ellipse 65% 55% at 50% -5%,  rgba(0,255,100,.1),  transparent 65%),
+        radial-gradient(ellipse 40% 35% at 85% 80%,  rgba(0,255,100,.05), transparent 65%);
 }
 
-/* 🟢 Animação: Ida (mais rápida) e Volta (mais lenta) em uma só imagem */
+/* Animação de fundo */
 @keyframes bg-zoom-slow {
-    0% { 
-        /* Estado inicial: 110% garante que cubra a tela sem deixar bordas em branco */
-        background-size: 110%; 
-        background-position: 50% 50%; /* Centralizado */
-    }
-    35% { 
-        /* IDA (Aproximação): Aumenta o zoom para 135% e move levemente a posição */
-        background-size: 135%; 
-        background-position: 48% 52%; 
-    }
-    100% { 
-        /* VOLTA (Retorno lento): Leva os 65% restantes do tempo para voltar ao 110% */
-        background-size: 110%; 
-        background-position: 50% 50%; 
-    }
+    0%   { background-size: 110%; background-position: 50% 50%; }
+    35%  { background-size: 135%; background-position: 48% 52%; }
+    100% { background-size: 110%; background-position: 50% 50%; }
 }
 
-/* Container do texto (MANTIDO) */
+/* Container — padding lateral fluido, sem margin-top fixo */
 .hero > .container {
-    margin-top: 60px;
     position: relative;
     z-index: 2;
     width: 100%;
+    padding-left:  clamp(.25rem, .5vw, .5rem);
+    padding-right: clamp(1.25rem, 5vw, 4rem);
 }
 
+/* Eyebrow */
 .hero-eyebrow {
-    margin-bottom: 1.25rem;
+    margin-bottom: clamp(.75rem, 1.5vh, 1.25rem);
 }
 
-/* Título principal - Escala reduzida e alinhado à esquerda */
+/* Título fluido */
 .hero-title {
-    /* Diminuído: era clamp(3.5rem, 9vw, 7rem) */
-    font-size: clamp(2.5rem, 6vw, 4.8rem); 
+    font-size: clamp(2.8rem, 6.5vw, 6rem);
     font-weight: 900;
-    line-height: 0.95;
+    line-height: 1;
     letter-spacing: -0.04em;
-    margin-bottom: 1.25rem;
+    margin-bottom: clamp(.75rem, 1.5vh, 1.25rem);
     background: var(--White-title);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    max-width: 800px;
+    max-width: min(800px, 55vw);
 }
 
+/* Subtítulo fluido */
 .hero-subtitle {
-    /* Diminuído: era 1.15rem */
-    font-size: clamp(.85rem, 1.8vw, 1rem); 
+    font-size: clamp(1rem, 1.8vw, 1.25rem);
     color: var(--White-title);
-    max-width: 480px;
-    margin: 0 0 2rem 0; /* Removido o margin auto para alinhar à esquerda */
+    max-width: min(480px, 50vw);
+    margin: 0 0 clamp(1.25rem, 3vh, 2rem) 0;
     line-height: 1.6;
     opacity: 0.8;
 }
 
-/* Botões CTA alinhados à esquerda */
+/* CTAs */
 .hero-cta {
     display: flex;
-    gap: 1rem;
-    justify-content: flex-start; 
-    flex-wrap: wrap;
-    margin-bottom: 3rem;
-}
-
-/* Barra de badges alinhada à esquerda */
-.hero-badges {
-    display: flex;
-    gap: 1.5rem;
+    gap: clamp(.6rem, 1.5vw, 1rem);
     justify-content: flex-start;
     flex-wrap: wrap;
-    padding: .75rem 1.25rem;
+    margin-bottom: clamp(1.5rem, 4vh, 3rem);
+}
+
+/* Badges */
+.hero-badges {
+    display: flex;
+    gap: clamp(.75rem, 2vw, 1.5rem);
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: .65rem 1.1rem;
     border-radius: 999px;
     background: rgba(0,255,100,.03);
     border: 1px solid var(--border);
     width: fit-content;
-    margin-left: 0; /* Alinhado à esquerda */
 }
 
 .hero-badge {
     display: flex;
     align-items: center;
-    gap: .5rem;
-    font-size: .75rem; /* Reduzido */
+    gap: .4rem;
+    font-size: clamp(.65rem, 1vw, .75rem);
     font-weight: 600;
     color: var(--muted);
 }
 
 .hero-badge .dot {
-    width: 6px;
-    height: 6px;
+    width: 6px; height: 6px;
     border-radius: 50%;
-    background: var(--accent); /* Cor verde */
+    background: var(--accent);
     box-shadow: 0 0 8px var(--accent);
     flex-shrink: 0;
     animation: pulse 2s infinite;
 }
 
+/* ════════════════════════════════════════════════════════
+   MEDIA QUERIES — ajustes por faixa de tela
+   ════════════════════════════════════════════════════════ */
+
+/* Mobile (até 640px) */
+@media (max-width: 640px) {
+    .hero-title    { max-width: 100%; font-size: clamp(1.9rem, 8vw, 2.6rem); }
+    .hero-subtitle { max-width: 100%; font-size: .875rem; }
+    .hero-cta      { flex-direction: column; }
+    .hero-badges   { gap: .75rem; }
+}
+
+/* Tablet (641px – 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .hero-title    { font-size: clamp(2.2rem, 5vw, 3.2rem); max-width: 70vw; }
+    .hero-subtitle { max-width: 60vw; }
+}
+
+/* Full HD (1920px) */
+@media (min-width: 1800px) {
+    .hero-title    { font-size: clamp(3rem, 3.5vw, 4.5rem); max-width: 750px; }
+    .hero-subtitle { font-size: 1.05rem; max-width: 520px; }
+}
+
+/* 2K / 4K (2560px+) */
+@media (min-width: 2400px) {
+    .hero-title    { font-size: clamp(3.5rem, 3vw, 5rem); max-width: 900px; }
+    .hero-subtitle { font-size: 1.15rem; max-width: 580px; }
+    .hero > .container {
+        padding-left:  clamp(1.5rem, 3vw, 4rem);
+        padding-right: clamp(3rem, 6vw, 8rem);
+    }
+}
+
 /* ── Services Section ───────────────────────────────── */
 .services-section {
-    background: var(--dark-index);
-    padding: 5rem 1.5rem; /* Ajustado padding lateral */
+    background: #0a0a0a;
+    padding: clamp(3rem, 6vh, 5rem) clamp(1.25rem, 4vw, 1.5rem);
 }
 
 .services-grid {
     display: grid !important;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
     gap: 1.25rem;
     margin-top: 2.5rem;
 }
 
-/* ── Card de serviço (Ajuste de Tipografia) ──────────── */
+/* ── Card de serviço ──────────────────────────────── */
 .svc-card {
     background: rgba(255,255,255,.02);
     border: 1px solid var(--border);
@@ -153,15 +173,13 @@
     overflow: hidden;
     transition: all var(--ease);
 }
-
 .svc-card:hover {
     border-color: var(--accent);
     transform: translateY(-4px);
 }
 
 .svc-icon {
-    width: 40px; /* Reduzido de 46px */
-    height: 40px;
+    width: 40px; height: 40px;
     border-radius: .5rem;
     background: var(--accent-d);
     border: 1px solid rgba(0,255,100,.2);
@@ -172,27 +190,9 @@
     margin-bottom: 1rem;
 }
 
-.svc-tag {
-    font-size: .55rem; /* Reduzido */
-    font-weight: 800;
-    letter-spacing: .15em;
-    color: var(--dim);
-    margin-bottom: .3rem;
-}
-
-.svc-title {
-    font-size: 1.05rem; /* Reduzido de 1.2rem */
-    font-weight: 800;
-    margin-bottom: .5rem;
-}
-
-.svc-desc {
-    color: var(--muted);
-    font-size: 0.8rem; /* Reduzido de 0.875rem */
-    line-height: 1.5;
-    margin-bottom: 1.25rem;
-    flex: 1;
-}
+.svc-tag   { font-size: .55rem; font-weight: 800; letter-spacing: .15em; color: var(--dim); margin-bottom: .3rem; }
+.svc-title { font-size: 1.05rem; font-weight: 800; margin-bottom: .5rem; }
+.svc-desc  { color: var(--muted); font-size: .8rem; line-height: 1.5; margin-bottom: 1.25rem; flex: 1; }
 
 .svc-feats {
     list-style: none;
@@ -201,19 +201,7 @@
     gap: .4rem;
     margin-bottom: 1.5rem;
 }
+.svc-feats li { font-size: .75rem; color: rgba(200,255,220,.7); }
 
-.svc-feats li {
-    font-size: 0.75rem; /* Reduzido */
-    color: rgba(200,255,220,.7);
-}
-
-.svc-price {
-    font-size: 0.7rem;
-    color: var(--dim);
-}
-
-.svc-price span {
-    color: var(--accent);
-    font-size: 0.95rem; /* Reduzido de 1rem */
-    font-weight: 800;
-}
+.svc-price      { font-size: .7rem; color: var(--dim); }
+.svc-price span { color: var(--accent); font-size: .95rem; font-weight: 800; }

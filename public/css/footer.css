@@ -5,11 +5,10 @@
 
 /* ── Container Principal (Espaçamentos Reduzidos) ─────── */
 .site-footer {
-    border-top: 1px solid rgba(0, 255, 100, 0.1);
     background: #000000;
-    padding-top: 3.5rem; /* Era 5rem */
-    padding-bottom: 1.5rem; /* Era 2.5rem */
-    margin-top: 3rem; /* Era 4rem */
+    padding-top: 3.5rem;
+    padding-bottom: 1.5rem;
+    margin-top: 0;
 }
 
 /* ── Estrutura de Grid ──────────────────────── */
