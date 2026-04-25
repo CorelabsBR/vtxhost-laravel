@@ -45,7 +45,7 @@
                 <p class="svc-desc">Hospedagem otimizada para WordPress, lojas virtuais e sistemas web com uptime garantido.</p>
                 <ul class="svc-feats">
                     <li>SSL gratuito incluído</li>
-                    <li>Painel cPanel intuitivo</li>
+                    <li>Painel Hestia intuitivo</li>
                     <li>Suporte 24/7</li>
                 </ul>
                 <div class="svc-divider"></div>
@@ -85,7 +85,7 @@
                 <div class="svc-divider"></div>
                 <div class="svc-footer">
                     <p class="svc-price">a partir de <span>R$9</span>/mês</p>
-                    <a href="{{ url('/cpanel') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
+                    <a href="{{ url('/games') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
                 </div>
             </div>
 

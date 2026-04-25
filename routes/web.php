@@ -17,10 +17,6 @@ Route::get('/vps', function () {
     return view('vps');
 })->name('vps');
 
-Route::get('/cpanel', function () {
-    return view('cpanel');
-})->name('cpanel');
-
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
@@ -45,4 +41,4 @@ Route::get('/carrinho/adicionar/{produto}', function ($produto) {
 })->name('carrinho.add');
 
 Route::get('/games', [GameHostingController::class, 'index'])->name('games.index');
-Route::get('/games/{jogo}', [GameHostingController::class, 'show'])->name('games.show');
+Route::get('/games/{jogo:slug}', [GameHostingController::class, 'show'])->name('games.show');

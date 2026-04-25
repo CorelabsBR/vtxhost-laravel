@@ -58,7 +58,7 @@
         <div class="services-grid">
 
             @forelse ($jogos as $jogo)
-                <a href="{{ route('games.show', $jogo) }}" class="svc-card" style="text-decoration:none;">
+                <a href="{{ route('games.show', $jogo->slug) }}" class="svc-card" style="text-decoration:none;">
 
                     @if ($jogo->banner)
                         <img

@@ -6,7 +6,7 @@
     <title>{{ $jogo->nome }} - VortexHost</title>
 
     <link rel="icon" type="image/png" href="{{ asset('img/logo_vtxhost.png') }}">
-    <link rel="stylesheet" href="{{ asset('css/minecraft.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/terraria.css') }}">
 </head>
 
 <body>
@@ -18,14 +18,14 @@
             </a>
 
             <ul class="nav-links">
-                <li><a href="{{ url('/') }}">Spawn</a></li>
+                <li><a href="{{ url('/') }}">Floresta</a></li>
                 <li><a href="{{ url('/games') }}">Servidores</a></li>
                 <li><a href="{{ url('/vps') }}">VPS</a></li>
                 <li><a href="{{ url('/cpanel') }}">Hospedagem Web</a></li>
             </ul>
 
             <div class="nav-actions">
-                <span class="nav-area-note">Área do player</span>
+                <span class="nav-area-note">Área do aventureiro</span>
                 <a class="btn btn-ghost btn-sm" href="{{ url('/login') }}">Entrar</a>
                 <a class="btn btn-primary btn-sm" href="{{ url('/registro') }}">Criar conta</a>
             </div>
@@ -36,7 +36,7 @@
         </nav>
 
         <nav class="mobile-nav" id="mobile-nav">
-            <a href="{{ url('/') }}">Spawn</a>
+            <a href="{{ url('/') }}">Floresta</a>
             <a href="{{ url('/games') }}">Servidores</a>
             <a href="{{ url('/vps') }}">VPS</a>
             <a href="{{ url('/cpanel') }}">Hospedagem Web</a>
@@ -46,46 +46,46 @@
     </div>
 </header>
 
-<main class="minecraftjava-section">
+<main class="terraria-section">
     <div class="container">
 
-        <section class="minecraftjava-header">
-            <div class="minecraftjava-header-info">
-                <span class="minecraftjava-eyebrow">Mundo dedicado</span>
+        <section class="terraria-header">
+            <div class="terraria-header-info">
+                <span class="terraria-eyebrow">Bioma dedicado</span>
 
-                <h1 class="minecraftjava-title">
+                <h1 class="terraria-title">
                     {{ $jogo->nome }}
                 </h1>
 
-                <p class="minecraftjava-sub">
-                    Escolha seu plano, equipe sua base e coloque seu servidor no ar.
-                    Performance bruta para vanilla, plugins, mods e survival raiz.
+                <p class="terraria-sub">
+                    Escolha seu plano, monte sua vila e abra seu mundo Terraria sem lag.
+                    Performance para survival, bosses, mods, eventos e caos noturno.
                 </p>
             </div>
         </section>
 
-        <section class="minecraftjava-plans-grid">
+        <section class="terraria-plans-grid">
             @forelse ($plans as $plan)
-                <article class="minecraftjava-card">
-                    <div class="minecraftjava-icon-fallback">
+                <article class="terraria-card">
+                    <div class="terraria-icon-fallback">
                         @if ($jogo->icon)
                             <img
                                 src="{{ asset('img/games/icons/' . $jogo->icon) }}"
                                 alt="{{ $jogo->nome }}"
-                                class="minecraftjava-icon-img"
+                                class="terraria-icon-img"
                             >
                         @else
-                            ⛏️
+                            🌳
                         @endif
                     </div>
 
-                    <p class="minecraftjava-plan-tag">Plano de mineração</p>
+                    <p class="terraria-plan-tag">Plano de aventura</p>
 
-                    <h3 class="minecraftjava-plan-name">
+                    <h3 class="terraria-plan-name">
                         {{ $plan->name }}
                     </h3>
 
-                    <ul class="minecraftjava-plan-specs">
+                    <ul class="terraria-plan-specs">
                         <li>
                             <span class="spec-label">RAM</span>
                             <span class="spec-value">{{ $plan->ramFormatada() }}</span>
@@ -102,18 +102,18 @@
                         </li>
                     </ul>
 
-                    <hr class="minecraftjava-divider">
+                    <hr class="terraria-divider">
 
-                    <div class="minecraftjava-card-footer">
+                    <div class="terraria-card-footer">
                         <a href="{{ route('carrinho.add', $plan->plan) }}" class="btn btn-primary btn-sm">
-                            Craftar servidor →
+                            Invocar servidor →
                         </a>
                     </div>
                 </article>
             @empty
-                <div class="minecraftjava-empty">
-                    <p class="minecraftjava-empty-icon">🧱</p>
-                    <h3>Sem planos no inventário</h3>
+                <div class="terraria-empty">
+                    <p class="terraria-empty-icon">🧱</p>
+                    <h3>Sem planos no baú</h3>
                     <p>Configura os planos no banco, camarada.</p>
                 </div>
             @endforelse
@@ -133,7 +133,7 @@
 
                 <p>
                     Infraestrutura para servidores de jogos com desempenho,
-                    estabilidade e suporte que não some igual aldeão de noite.
+                    estabilidade e suporte que não some igual Blood Moon.
                 </p>
 
                 <a href="mailto:contato@vortexhost.com.br">
@@ -141,7 +141,7 @@
                 </a>
 
                 <span class="footer-status">
-                    Realm online
+                    Mundo online
                 </span>
             </div>
 
@@ -174,7 +174,7 @@
             </div>
 
             <div class="footer-col">
-                <h4>Guilda</h4>
+                <h4>Taverna</h4>
 
                 <div class="social-icons">
                     <a href="https://instagram.com/Colocar_a_merda_do_link_aqui_gordao" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
@@ -197,7 +197,7 @@
 
         <div class="footer-bottom">
             <span class="footer-copy">
-                VortexHost © {{ date('Y') }} — bloco por bloco.
+                VortexHost © {{ date('Y') }} — boss por boss.
             </span>
 
             <div class="footer-payments">

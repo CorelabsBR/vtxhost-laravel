@@ -1,22 +1,22 @@
 /* ══════════════════════════════════════════════════════
-   VORTEXHOST — MINECRAFT EXTREMO THEME
-   arquivo: public/css/minecraft.css
+   VORTEXHOST — TERRARIA EXTREMO THEME
+   arquivo: public/css/terraria.css
    ══════════════════════════════════════════════════════ */
 
 :root {
-    --grass: #55ff55;
-    --grass-dark: #2ca326;
-    --emerald: #00d86f;
-    --diamond: #5ee7ff;
-    --gold: #ffd84a;
-    --redstone: #ff4040;
+    --leaf: #4fd66d;
+    --leaf-dark: #1f7a3a;
+    --mana: #4ea8ff;
+    --crystal: #88f7ff;
+    --sun: #ffd166;
+    --blood: #d63b46;
 
-    --dirt: #5b351c;
-    --dirt-2: #3b2314;
-    --stone: #2d2f32;
-    --stone-2: #181a1d;
-    --obsidian: #08070d;
-    --coal: #0b0d0f;
+    --wood: #6b3f22;
+    --wood-2: #2d1a10;
+    --cave: #23283a;
+    --cave-2: #101421;
+    --night: #060814;
+    --void: #07080d;
 
     --text: #f5f5f5;
     --muted: rgba(255,255,255,.62);
@@ -191,7 +191,7 @@ img {
     width: 24px;
     height: 3px;
     margin: 4px 0;
-    background: var(--grass);
+    background: var(--leaf);
 }
 
 .mobile-nav {
@@ -216,7 +216,7 @@ img {
 
 .mobile-nav a:hover {
     color: white;
-    border-color: var(--grass);
+    border-color: var(--leaf);
 }
 
 /* BUTTONS */
@@ -285,7 +285,7 @@ img {
 
 /* MAIN PAGE */
 
-.minecraftjava-section {
+.terraria-section {
     position: relative;
     flex: 1;
     overflow: hidden;
@@ -296,7 +296,7 @@ img {
         repeating-linear-gradient(90deg, transparent 0 28px, rgba(255,255,255,.035) 28px 32px);
 }
 
-.minecraftjava-section::before {
+.terraria-section::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -306,7 +306,7 @@ img {
         linear-gradient(90deg, rgba(91,53,28,.25), transparent 28%, transparent 72%, rgba(91,53,28,.25));
 }
 
-.minecraftjava-section::after {
+.terraria-section::after {
     content: "";
     position: absolute;
     width: 520px;
@@ -322,7 +322,7 @@ img {
 
 /* HERO */
 
-.minecraftjava-header {
+.terraria-header {
     position: relative;
     z-index: 2;
     margin-bottom: 3.5rem;
@@ -342,8 +342,8 @@ img {
         0 26px 50px rgba(0,0,0,.45);
 }
 
-.minecraftjava-header::before {
-    content: "⛏️  ◆  🧱  ◆  💎";
+.terraria-header::before {
+    content: "🌳  ◆  🗡️  ◆  🌙";
     display: block;
     color: rgba(255,255,255,.75);
     font-size: 1.25rem;
@@ -352,14 +352,14 @@ img {
     text-shadow: 3px 3px 0 #000;
 }
 
-.minecraftjava-eyebrow {
+.terraria-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: .5rem;
     margin-bottom: 1rem;
     padding: .45rem .85rem;
     background: #101a10;
-    color: var(--grass);
+    color: var(--leaf);
     border: 3px solid #050805;
     box-shadow:
         inset 0 3px 0 rgba(255,255,255,.12),
@@ -370,12 +370,12 @@ img {
     text-transform: uppercase;
 }
 
-.minecraftjava-eyebrow::before {
-    content: "⬛";
-    color: var(--grass);
+.terraria-eyebrow::before {
+    content: "✦";
+    color: var(--leaf);
 }
 
-.minecraftjava-title {
+.terraria-title {
     color: #fff;
     font-size: clamp(2.3rem, 7vw, 5.2rem);
     font-weight: 1000;
@@ -388,7 +388,7 @@ img {
         0 0 22px rgba(85,255,85,.28);
 }
 
-.minecraftjava-sub {
+.terraria-sub {
     max-width: 620px;
     margin: 1.2rem auto 0;
     color: #d8d8d8;
@@ -400,7 +400,7 @@ img {
 
 /* PLANS */
 
-.minecraftjava-plans-grid {
+.terraria-plans-grid {
     position: relative;
     z-index: 2;
     max-width: 1120px;
@@ -412,7 +412,7 @@ img {
 
 /* CARD */
 
-.minecraftjava-card {
+.terraria-card {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -432,37 +432,37 @@ img {
     transition: transform var(--ease), filter var(--ease), outline-color var(--ease);
 }
 
-.minecraftjava-card:nth-child(1) {
+.terraria-card:nth-child(1) {
     background:
         linear-gradient(180deg, rgba(90,60,30,.65), rgba(35,22,12,.95)),
         repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 8px, transparent 8px 16px);
 }
 
-.minecraftjava-card:nth-child(2) {
+.terraria-card:nth-child(2) {
     background:
         linear-gradient(180deg, rgba(120,126,130,.55), rgba(35,38,42,.96)),
         repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 8px, transparent 8px 16px);
 }
 
-.minecraftjava-card:nth-child(3) {
+.terraria-card:nth-child(3) {
     background:
         linear-gradient(180deg, rgba(255,216,74,.45), rgba(83,57,12,.96)),
         repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 8px, transparent 8px 16px);
 }
 
-.minecraftjava-card:nth-child(4) {
+.terraria-card:nth-child(4) {
     background:
         linear-gradient(180deg, rgba(94,231,255,.42), rgba(10,52,65,.98)),
         repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 8px, transparent 8px 16px);
 }
 
-.minecraftjava-card:nth-child(5) {
+.terraria-card:nth-child(5) {
     background:
         linear-gradient(180deg, rgba(68,35,104,.72), rgba(8,7,13,.98)),
         repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 8px, transparent 8px 16px);
 }
 
-.minecraftjava-card::before {
+.terraria-card::before {
     content: "";
     position: absolute;
     inset: 8px;
@@ -470,8 +470,8 @@ img {
     pointer-events: none;
 }
 
-.minecraftjava-card::after {
-    content: "CRAFT";
+.terraria-card::after {
+    content: "BOSS";
     position: absolute;
     top: .75rem;
     right: .75rem;
@@ -481,7 +481,7 @@ img {
     letter-spacing: .18em;
 }
 
-.minecraftjava-card:hover {
+.terraria-card:hover {
     transform: translate(-4px, -6px);
     filter: brightness(1.08);
     outline-color: rgba(85,255,85,.75);
@@ -489,8 +489,8 @@ img {
 
 /* ICON */
 
-.minecraftjava-card-icon,
-.minecraftjava-icon-fallback {
+.terraria-card-icon,
+.terraria-icon-fallback {
     width: 58px;
     height: 58px;
     margin-bottom: 1.2rem;
@@ -506,7 +506,7 @@ img {
         4px 4px 0 #000;
 }
 
-.minecraftjava-icon-img {
+.terraria-icon-img {
     width: 36px;
     height: 36px;
     object-fit: contain;
@@ -515,13 +515,13 @@ img {
         drop-shadow(0 0 8px rgba(85,255,85,.28));
 }
 
-.minecraftjava-icon-fallback:has(img) {
+.terraria-icon-fallback:has(img) {
     font-size: 0;
 }
 
 /* TEXT */
 
-.minecraftjava-plan-tag {
+.terraria-plan-tag {
     color: rgba(255,255,255,.55);
     font-size: .62rem;
     font-weight: 1000;
@@ -530,7 +530,7 @@ img {
     margin-bottom: .35rem;
 }
 
-.minecraftjava-plan-name {
+.terraria-plan-name {
     min-height: 2.4rem;
     color: #fff;
     font-size: 1.25rem;
@@ -544,7 +544,7 @@ img {
 
 /* SPECS */
 
-.minecraftjava-plan-specs {
+.terraria-plan-specs {
     overflow: hidden;
     margin-bottom: 1.35rem;
     border: 4px solid #080808;
@@ -554,7 +554,7 @@ img {
         4px 4px 0 rgba(0,0,0,.65);
 }
 
-.minecraftjava-plan-specs li {
+.terraria-plan-specs li {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -565,7 +565,7 @@ img {
         linear-gradient(90deg, rgba(255,255,255,.04), transparent);
 }
 
-.minecraftjava-plan-specs li:last-child {
+.terraria-plan-specs li:last-child {
     border-bottom: 0;
 }
 
@@ -584,19 +584,19 @@ img {
     text-shadow: 2px 2px 0 #000;
 }
 
-.minecraftjava-plan-specs li:nth-child(1) .spec-value::before {
-    content: "🧠 ";
+.terraria-plan-specs li:nth-child(1) .spec-value::before {
+    content: "💎 ";
 }
 
-.minecraftjava-plan-specs li:nth-child(2) .spec-value::before {
-    content: "🧱 ";
+.terraria-plan-specs li:nth-child(2) .spec-value::before {
+    content: "🪵 ";
 }
 
-.minecraftjava-plan-specs li:nth-child(3) .spec-value::before {
-    content: "⚙️ ";
+.terraria-plan-specs li:nth-child(3) .spec-value::before {
+    content: "⚔️ ";
 }
 
-.minecraftjava-divider {
+.terraria-divider {
     margin: auto 0 1.25rem;
     border: 0;
     height: 4px;
@@ -604,19 +604,19 @@ img {
         repeating-linear-gradient(90deg, #111 0 12px, rgba(255,255,255,.16) 12px 24px);
 }
 
-.minecraftjava-card-footer {
+.terraria-card-footer {
     margin-top: auto;
     display: flex;
 }
 
-.minecraftjava-card-footer .btn {
+.terraria-card-footer .btn {
     width: 100%;
     justify-content: center;
 }
 
 /* EMPTY */
 
-.minecraftjava-empty {
+.terraria-empty {
     grid-column: 1 / -1;
     text-align: center;
     padding: 4rem 2rem;
@@ -627,14 +627,14 @@ img {
     box-shadow: 8px 8px 0 #000;
 }
 
-.minecraftjava-empty-icon {
+.terraria-empty-icon {
     display: block;
     font-size: 3rem;
     margin-bottom: 1rem;
     filter: drop-shadow(4px 4px 0 #000);
 }
 
-.minecraftjava-empty h3 {
+.terraria-empty h3 {
     color: white;
     font-size: 1.4rem;
     font-weight: 1000;
@@ -642,7 +642,7 @@ img {
     margin-bottom: .5rem;
 }
 
-.minecraftjava-empty p {
+.terraria-empty p {
     color: var(--muted);
     font-weight: 700;
 }
@@ -676,7 +676,7 @@ img {
 }
 
 .footer-brand a {
-    color: var(--grass);
+    color: var(--leaf);
     font-weight: 900;
 }
 
@@ -688,7 +688,7 @@ img {
     padding: .45rem .75rem;
     background: rgba(85,255,85,.12);
     border: 3px solid #071107;
-    color: var(--grass);
+    color: var(--leaf);
     font-size: .62rem;
     font-weight: 1000;
     letter-spacing: .14em;
@@ -700,8 +700,8 @@ img {
     content: "";
     width: 8px;
     height: 8px;
-    background: var(--grass);
-    box-shadow: 0 0 10px var(--grass);
+    background: var(--leaf);
+    box-shadow: 0 0 10px var(--leaf);
     animation: pulse 1.4s steps(2, end) infinite;
 }
 
@@ -726,7 +726,7 @@ img {
 }
 
 .footer-links a:hover {
-    color: var(--grass);
+    color: var(--leaf);
 }
 
 .social-icons {
@@ -756,7 +756,7 @@ img {
 
 .social-icon:hover {
     transform: translate(-2px, -2px);
-    color: var(--grass);
+    color: var(--leaf);
 }
 
 .footer-bottom {
@@ -825,15 +825,15 @@ img {
         display: block;
     }
 
-    .minecraftjava-section {
+    .terraria-section {
         padding: 2.5rem 1rem 4rem;
     }
 
-    .minecraftjava-header {
+    .terraria-header {
         padding: 2rem 1rem;
     }
 
-    .minecraftjava-header::before {
+    .terraria-header::before {
         font-size: 1rem;
         letter-spacing: .3rem;
     }
@@ -853,11 +853,11 @@ img {
         flex-direction: column;
     }
 
-    .minecraftjava-plans-grid {
+    .terraria-plans-grid {
         grid-template-columns: 1fr;
     }
 
-    .minecraftjava-card {
+    .terraria-card {
         min-height: auto;
     }
 }
