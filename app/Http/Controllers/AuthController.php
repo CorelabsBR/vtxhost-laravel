@@ -34,36 +34,36 @@ class AuthController extends Controller
     // =========================
     // REGISTER
     // =========================
-    public function register(Request $request)
-    {
-        $data = $request->validate([
-            'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'email', 'max:255', 'unique:user,email'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ], [
-            'name.required' => 'Mete teu nome.',
-            'email.required' => 'Mete teu e-mail.',
-            'email.email' => 'E-mail inválido.',
-            'email.unique' => 'E-mail já cadastrado.',
-            'password.required' => 'Mete uma senha.',
-            'password.min' => 'Senha fraca demais.',
-            'password.confirmed' => 'As senhas não batem.',
-        ]);
+ public function register(Request $request)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:user,email',
+        'password' => 'required|confirmed|min:6',
+    ]);
 
-        $user = User::create([
-            'nome' => $data['name'],
-            'email' => strtolower($data['email']),
-            'senha' => Hash::make($data['password']),
-            'tipo_usuario' => 'cliente'
-        ]);
+    User::create([
+        'nome' => $request->name,
+        'email' => $request->email,
+        'senha' => Hash::make($request->password),
 
-        Auth::login($user);
+        'cpf_cnpj' => $request->cpf_cnpj,
+        'celular' => $request->celular,
+        'cep' => $request->cep,
+        'rua' => $request->rua,
+        'numero' => $request->numero,
+        'complemento' => $request->complemento,
+        'bairro' => $request->bairro,
+        'cidade' => $request->cidade,
+        'estado' => $request->estado,
+        'pais' => $request->pais,
+        'data_nasc' => $request->data_nasc,
 
-        $request->session()->regenerate();
+        'tipo_usuario' => 'cliente',
+    ]);
 
-        return redirect()->route('cliente.dashboard');
-    }
-
+    return redirect()->route('login')->with('success', 'Conta criada com sucesso.');
+}
     // =========================
     // LOGIN
     // =========================

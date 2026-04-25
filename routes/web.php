@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebHostingController;
 use App\Http\Controllers\GameHostingController;
-use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
     return view('home');

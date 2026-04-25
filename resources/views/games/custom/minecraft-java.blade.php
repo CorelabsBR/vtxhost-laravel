@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -10,7 +11,43 @@
     <link rel="stylesheet" href="{{ asset('css/minecraft.css') }}">
 </head>
 <body>    
-    
+<header class="site-header">
+    <div class="container">
+        <nav class="nav-inner">
+
+            <a class="brand" href="{{ url('/') }}">
+                <img src="{{ asset('img/logo_vtxhost.png') }}" alt="logo_vtxhost" id="logo_img">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="{{ url('/') }}">Início</a></li>
+                <li><a href="{{ url('/games') }}">Hospedagem de Jogos</a></li>
+                <li><a href="{{ url('/vps') }}">VPS</a></li>
+                <li><a href="{{ url('/cpanel') }}">Hospedagem Web</a></li>
+            </ul>
+
+            <div class="nav-actions">
+                <span class="nav-area-note">Cliente?</span>
+                <a class="btn btn-ghost btn-sm" href="{{ url('/login') }}">Entrar</a>
+                <a class="btn btn-primary btn-sm" href="{{ url('/registro') }}">Criar conta</a>
+            </div>
+
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+
+        </nav>
+
+        <nav class="mobile-nav" id="mobile-nav">
+            <a href="{{ url('/') }}">Início</a>
+            <a href="{{ url('/host') }}">Hospedagem</a>
+            <a href="{{ url('/vps') }}">VPS</a>
+            <a href="{{ url('/cpanel') }}">cPanel</a>
+            <a href="{{ url('/login') }}">Entrar</a>
+            <a href="{{ url('/registro') }}">Criar conta</a>
+        </nav>
+    </div>
+</header>
 
 <script src="{{ asset('js/header.js') }}"></script>
 <section class="minecraftjava-section">
@@ -19,16 +56,6 @@
         <!-- HEADER DO JOGO -->
         <div class="minecraftjava-header">
 
-            @if ($jogo->banner)
-                <div class="minecraftjava-banner-wrap">
-                    <img
-                        src="{{ asset('img/minecraftjavas/' . $jogo->banner) }}"
-                        alt="{{ $jogo->nome }}"
-                        class="minecraftjava-banner"
-                    >
-                    <div class="minecraftjava-banner-overlay"></div>
-                </div>
-            @endif
 
             <div class="minecraftjava-header-info">
                 <span class="minecraftjava-eyebrow">Servidor de Jogo</span>
@@ -44,17 +71,17 @@
             @forelse ($plans as $plan)
                 <div class="minecraftjava-card">
 
-                    <div class="minecraftjava-card-icon">
-                        @if ($plan->icon)
-                            <img
-                                src="{{ asset('img/minecraftjavas/icons/' . $plan->icon) }}"
-                                alt="{{ $plan->name }}"
-                                class="minecraftjava-icon-img"
-                            >
-                        @else
-                            <div class="minecraftjava-icon-fallback">🎮</div>
-                        @endif
-                    </div>
+<div class="minecraftjava-icon-fallback">
+    @if ($jogo->icon)
+        <img
+            src="{{ asset('img/games/icons/' . $jogo->icon) }}"
+            alt="{{ $jogo->nome }}"
+            class="minecraftjava-icon-img"
+        >
+    @else
+        <div class="minecraftjava-icon-fallback">🎮</div>
+    @endif
+</div>
 
                     <p class="minecraftjava-plan-tag">Plano</p>
 

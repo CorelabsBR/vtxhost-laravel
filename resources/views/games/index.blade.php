@@ -20,7 +20,7 @@
             <div class="nav-actions">
                 <span class="nav-area-note">Cliente?</span>
                 <a class="btn btn-ghost btn-sm" href="{{ url('/login') }}">Entrar</a>
-                <a class="btn btn-primary btn-sm" href="{{ url('/cadastro') }}">Criar conta</a>
+                <a class="btn btn-primary btn-sm" href="{{ url('/registro') }}">Criar conta</a>
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="Menu">
