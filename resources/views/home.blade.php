@@ -85,7 +85,7 @@
                 <div class="svc-divider"></div>
                 <div class="svc-footer">
                     <p class="svc-price">a partir de <span>R$9</span>/mês</p>
-                    <a href="{{ url('/games') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
+                    <a href="{{ url('/') }}" class="btn btn-ghost btn-sm">Ver Planos →</a>
                 </div>
             </div>
 
