@@ -748,3 +748,36 @@ input[type="checkbox"] {
     color: rgba(255, 255, 255, .3);
     line-height: 1;
 }
+.auth-body.auth-register {
+    overflow: auto;
+}
+
+.auth-register .auth-split {
+    min-height: 100vh;
+}
+
+.auth-register .auth-form-side {
+    align-items: flex-start;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.auth-register .auth-card {
+    max-width: 620px;
+}
+
+.auth-register .auth-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 1rem;
+}
+
+.auth-register .form-group.full {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 768px) {
+    .auth-register .auth-form-grid {
+        grid-template-columns: 1fr;
+    }
+}
