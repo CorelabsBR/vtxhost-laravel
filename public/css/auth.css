@@ -63,13 +63,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--card, #0d0d0d);
+    background: #0a0a0a;
     border-right: 1px solid var(--border, rgba(255,255,255,.08));
     overflow: hidden;
     padding: 3rem;
 }
 
-/* Grade decorativa estilo cyberpunk/Discord */
 .auth-panel-grid {
     position: absolute;
     inset: 0;
@@ -81,7 +80,6 @@
     pointer-events: none;
 }
 
-/* Brilho central sutil */
 .auth-panel::before {
     content: '';
     position: absolute;
@@ -106,7 +104,8 @@
 .auth-logo {
     width: 72px;
     height: auto;
-    margin-bottom: 1.75rem;
+    margin: 0 auto 1.75rem;
+    display: block;
     filter: drop-shadow(0 0 18px rgba(0, 255, 100, .3));
     animation: logo-float 4s ease-in-out infinite;
 }
@@ -290,16 +289,16 @@
 }
 
 /* ─────────────────────────────────────────────
-   PAINEL DIREITO (formulário)
+   PAINEL DIREITO (formulário) — fundo preto acinzentado
 ───────────────────────────────────────────── */
 
 .auth-form-side {
-    width: min(580px, 100%);
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 3rem 2.5rem;
-    background: var(--bg, #000);
+    background: #0a0a0a;
     overflow-y: auto;
 }
 
@@ -317,10 +316,6 @@
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
 }
-
-/* ─────────────────────────────────────────────
-   CABEÇALHO DO CARD
-───────────────────────────────────────────── */
 
 .auth-title {
     font-size: 1.85rem;
@@ -373,14 +368,9 @@
     transform: translateY(-1px);
 }
 
-.btn-social:active {
-    transform: translateY(0);
-}
+.btn-social:active { transform: translateY(0); }
 
-.btn-discord {
-    color: #7289da;
-}
-
+.btn-discord { color: #7289da; }
 .btn-discord:hover {
     border-color: rgba(114, 137, 218, .4);
     background: rgba(114, 137, 218, .07);
@@ -466,15 +456,10 @@
     font-family: inherit;
     outline: none;
     box-sizing: border-box;
-    transition:
-        border-color .2s,
-        background .2s,
-        box-shadow .2s;
+    transition: border-color .2s, background .2s, box-shadow .2s;
 }
 
-.form-input:hover:not(:disabled) {
-    background: rgba(255, 255, 255, .08);
-}
+.form-input:hover:not(:disabled) { background: rgba(255, 255, 255, .08); }
 
 .form-input:focus {
     border-color: var(--accent, #00ff64);
@@ -482,17 +467,11 @@
     box-shadow: 0 0 0 3px rgba(0, 255, 100, .12);
 }
 
-.form-input::placeholder {
-    color: var(--dim, #52525b);
-}
-
-.form-input:disabled {
-    opacity: .45;
-    cursor: not-allowed;
-}
+.form-input::placeholder { color: var(--dim, #52525b); }
+.form-input:disabled { opacity: .45; cursor: not-allowed; }
 
 /* ─────────────────────────────────────────────
-   WRAPPER SENHA + TOGGLE
+   WRAPPER SENHA
 ───────────────────────────────────────────── */
 
 .input-password-wrapper {
@@ -501,9 +480,7 @@
     align-items: center;
 }
 
-.input-password-wrapper .form-input {
-    padding-right: 3rem;
-}
+.input-password-wrapper .form-input { padding-right: 3rem; }
 
 .password-toggle {
     position: absolute;
@@ -520,9 +497,7 @@
     transition: color .2s;
 }
 
-.password-toggle:hover {
-    color: var(--text, #fff);
-}
+.password-toggle:hover { color: var(--text, #fff); }
 
 /* ─────────────────────────────────────────────
    ESTADO DE ERRO
@@ -618,16 +593,13 @@ input[type="checkbox"] {
 }
 
 @media (max-width: 768px) {
-    .auth-body {
-        overflow: auto;
-    }
+    .auth-body { overflow: auto; }
 
     .auth-split {
         flex-direction: column;
         min-height: 100vh;
     }
 
-    /* Painel esquerdo vira banner compacto no topo */
     .auth-panel {
         flex: none;
         padding: 3.5rem 2rem 2rem;
@@ -635,54 +607,27 @@ input[type="checkbox"] {
         border-bottom: 1px solid var(--border, rgba(255,255,255,.08));
     }
 
-    .auth-panel-grid {
-        background-size: 32px 32px;
-    }
+    .auth-panel-grid { background-size: 32px 32px; }
+    .auth-logo { width: 52px; margin-bottom: 1rem; }
+    .auth-panel-title { font-size: 1.35rem; }
+    .auth-panel-sub { font-size: .82rem; }
+    .auth-features { display: none; }
+    .auth-testimonial { display: none; }
 
-    .auth-logo {
-        width: 52px;
-        margin-bottom: 1rem;
-    }
-
-    .auth-panel-title {
-        font-size: 1.35rem;
-    }
-
-    .auth-panel-sub {
-        font-size: .82rem;
-    }
-
-    .auth-features {
-        display: none;
-    }
-
-    .auth-testimonial {
-        display: none;
-    }
-
-    /* Formulário ocupa o resto */
     .auth-form-side {
         width: 100%;
         padding: 2rem 1.25rem 3rem;
     }
 
-    .auth-back {
-        top: .875rem;
-        left: .875rem;
-    }
-
-    .social-login {
-        flex-direction: column;
-    }
+    .auth-back { top: .875rem; left: .875rem; }
+    .social-login { flex-direction: column; }
 }
 
 /* ─────────────────────────────────────────────
    RECAPTCHA
 ───────────────────────────────────────────── */
 
-.recaptcha-wrapper {
-    margin-bottom: 1.1rem;
-}
+.recaptcha-wrapper { margin-bottom: 1.1rem; }
 
 .recaptcha-placeholder {
     display: flex;
