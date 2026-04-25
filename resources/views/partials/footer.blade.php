@@ -24,9 +24,9 @@
             <div class="footer-col">
                 <h4>Serviços</h4>
                 <ul class="footer-links">
-                    <li><a href="{{ url('/host') }}">HospedaWeb</a></li>
+                    <li><a href="{{ url('/host') }}">Servidores de Jogos</a></li>
                     <li><a href="{{ url('/vps') }}">VPS Premium</a></li>
-                    <li><a href="{{ url('/cpanel') }}">Servidores de Jogos</a></li>
+                    <li><a href="{{ url('/web') }}">Hospedagem Web</a></li>
                 </ul>
             </div>
 

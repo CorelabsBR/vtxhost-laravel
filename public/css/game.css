@@ -1,14 +1,14 @@
 /* ══════════════════════════════════════════════════════
-   GAME PAGE — CSS adicional (depende de base.css)
-   Não altera nenhuma classe existente.
+   GAME.CSS — Seção principal, cards de planos
+   Depende de: basegame.css
    ══════════════════════════════════════════════════════ */
 
-/* ── Section wrapper ────────────────────────────────── */
 .game-section {
     background: var(--dark-index);
     padding: 4rem 1.5rem 6rem;
     position: relative;
     overflow: hidden;
+    flex: 1;
 }
 
 /* Grid pixelada de fundo */
@@ -29,7 +29,7 @@
     width: 500px;
     height: 500px;
     border-radius: 50%;
-    background: radial-gradient(ellipse, rgba(61,255,160,.07) 0%, transparent 70%);
+    background: radial-gradient(ellipse, rgba(0,255,100,.07) 0%, transparent 70%);
     top: -80px;
     right: -80px;
     pointer-events: none;
@@ -38,7 +38,7 @@
 /* ── Banner ─────────────────────────────────────────── */
 .game-banner-wrap {
     position: relative;
-    border-radius: var(--r);
+    border-radius: 16px;
     overflow: hidden;
     margin-bottom: 2rem;
     border: 1px solid var(--border);
@@ -76,8 +76,8 @@
     letter-spacing: .2em;
     text-transform: uppercase;
     color: var(--accent);
-    background: var(--accent-d);
-    border: 1px solid rgba(61,255,160,.2);
+    background: rgba(0,255,100,.08);
+    border: 1px solid rgba(0,255,100,.2);
     border-radius: 999px;
     padding: .3rem .8rem;
     margin-bottom: 1rem;
@@ -113,18 +113,17 @@
 
 /* ── Card ───────────────────────────────────────────── */
 .game-card {
-    background: var(--card);
+    background: rgba(255,255,255,.02);
     border: 1px solid var(--border);
-    border-radius: var(--r);
+    border-radius: 12px;
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    transition: all var(--ease);
+    transition: border-color .2s ease, transform .2s ease, box-shadow .2s ease;
 }
 
-/* Linha accent no topo ao hover */
 .game-card::before {
     content: '';
     position: absolute;
@@ -132,14 +131,13 @@
     height: 2px;
     background: linear-gradient(90deg, transparent, var(--accent), transparent);
     opacity: 0;
-    transition: opacity var(--ease);
+    transition: opacity .2s ease;
 }
 
 .game-card:hover {
-    border-color: var(--border-s);
-    background: var(--card-hv);
+    border-color: rgba(0,255,100,.4);
     transform: translateY(-4px);
-    box-shadow: var(--shadow);
+    box-shadow: 0 16px 40px rgba(0,0,0,.4), 0 0 20px rgba(0,255,100,.05);
 }
 
 .game-card:hover::before { opacity: 1; }
@@ -159,22 +157,22 @@
     height: 32px;
     object-fit: contain;
     image-rendering: pixelated;
-    filter: drop-shadow(0 2px 6px var(--accent-g));
+    filter: drop-shadow(0 2px 6px rgba(0,255,100,.25));
 }
 
 .game-icon-fallback {
     width: 40px;
     height: 40px;
-    border-radius: var(--r-sm);
+    border-radius: .5rem;
     background: var(--accent-d);
-    border: 1px solid rgba(61,255,160,.2);
+    border: 1px solid rgba(0,255,100,.2);
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 18px;
 }
 
-/* ── Plan tag & name ────────────────────────────────── */
+/* ── Plan info ──────────────────────────────────────── */
 .game-plan-tag {
     font-size: .55rem;
     font-weight: 800;
@@ -192,7 +190,7 @@
     letter-spacing: -0.01em;
 }
 
-/* ── Specs list ─────────────────────────────────────── */
+/* ── Specs ──────────────────────────────────────────── */
 .game-plan-specs {
     list-style: none;
     display: flex;
@@ -200,7 +198,7 @@
     gap: 0;
     margin-bottom: 1.25rem;
     border: 1px solid rgba(255,255,255,.05);
-    border-radius: var(--r-sm);
+    border-radius: 8px;
     overflow: hidden;
 }
 
@@ -216,33 +214,33 @@
 
 .game-plan-specs li:last-child { border-bottom: none; }
 
-.spec-label {
-    color: var(--dim);
+.game-spec-label {
+    color: rgba(255,255,255,.4);
     font-weight: 600;
     font-size: 0.68rem;
     letter-spacing: .04em;
 }
 
-.spec-value {
-    color: var(--accent);
+.game-spec-value {
+    color: rgba(200,255,220,.8);
     font-weight: 700;
 }
 
 /* ── Divider ────────────────────────────────────────── */
 .game-divider {
     border: none;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid rgba(255,255,255,.06);
     margin-bottom: 1.25rem;
 }
 
-/* ── Footer ─────────────────────────────────────────── */
+/* ── Card Footer ────────────────────────────────────── */
 .game-card-footer {
     margin-top: auto;
     display: flex;
     justify-content: flex-end;
 }
 
-/* ── Empty state ────────────────────────────────────── */
+/* ── Empty State ────────────────────────────────────── */
 .game-empty {
     grid-column: 1 / -1;
     text-align: center;
@@ -266,7 +264,7 @@
 .game-empty p { font-size: .85rem; }
 
 /* ── Responsive ─────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 500px) {
     .game-plans-grid {
         grid-template-columns: 1fr;
     }

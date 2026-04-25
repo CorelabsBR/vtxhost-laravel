@@ -27,9 +27,9 @@
 
         <nav class="mobile-nav" id="mobile-nav">
             <a href="{{ url('/') }}">Início</a>
-            <a href="{{ url('/host') }}">Hospedagem</a>
+            <a href="{{ url('/host') }}">Hospedagem de Jogos</a>
             <a href="{{ url('/vps') }}">VPS</a>
-            <a href="{{ url('/cpanel') }}">cPanel</a>
+            <a href="{{ url('/web') }}">Hospedagem Web</a>
             <a href="{{ url('/login') }}">Entrar</a>
             <a href="{{ url('/registro') }}">Criar conta</a>
         </nav>
