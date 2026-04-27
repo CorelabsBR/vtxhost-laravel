@@ -24,3 +24,4 @@ _ide_helper.php
 Homestead.json
 Homestead.yaml
 Thumbs.db
+gh repo create vortexhost-laravel --public --source=. --remote=origin --push

@@ -46,4 +46,11 @@ class Plan extends Model
     {
         return $this->cpu ? $this->cpu . ' vCPU' : 'Ilimitado';
     }
+
+        public function precoFormatada(): string
+    {
+return $this->price
+    ? 'R$ ' . number_format($this->price / 100, 2, ',', '.')
+    : 'Gratuito';
+    }
 }

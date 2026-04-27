@@ -33,7 +33,7 @@
             <a href="{{ url('/') }}">Início</a>
             <a href="{{ url('/host') }}">Hospedagem</a>
             <a href="{{ url('/vps') }}">VPS</a>
-            <a href="{{ url('/cpanel') }}">cPanel</a>
+            <a href="{{ url('/web') }}">web</a>
             <a href="{{ url('/login') }}">Entrar</a>
             <a href="{{ url('/registro') }}">Criar conta</a>
         </nav>
@@ -86,10 +86,16 @@
                                 <span class="period">/mês</span>
                             </div>
                         </div>
+<form method="POST" action="{{ route('checkout.redirect') }}" class="plan-checkout-form">
+    @csrf
 
-                        <a href="{{ route('carrinho.add', $produto->id) }}" class="btn btn-primary btn-sm">
-                            Contratar →
-                        </a>
+    <input type="hidden" name="items[0][plan_id]" value="{{ $produto->id }}">
+    <input type="hidden" name="items[0][quantity]" value="1">
+
+    <button type="submit" class="btn btn-primary">
+        Contratar agora
+    </button>
+</form>
                     </div>
 
                 </div>
@@ -135,7 +141,7 @@
                 <ul class="footer-links">
                     <li><a href="{{ url('/host') }}">HospedaWeb</a></li>
                     <li><a href="{{ url('/vps') }}">VPS Premium</a></li>
-                    <li><a href="{{ url('/cpanel') }}">Servidores de Jogos</a></li>
+                    <li><a href="{{ url('/web') }}">Servidores de Jogos</a></li>
                 </ul>
             </div>
 

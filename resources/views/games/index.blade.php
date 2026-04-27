@@ -33,7 +33,7 @@
             <a href="{{ url('/') }}">Início</a>
             <a href="{{ url('/host') }}">Hospedagem</a>
             <a href="{{ url('/vps') }}">VPS</a>
-            <a href="{{ url('/cpanel') }}">cPanel</a>
+            <a href="{{ url('/web') }}">web</a>
             <a href="{{ url('/login') }}">Entrar</a>
             <a href="{{ url('/registro') }}">Criar conta</a>
         </nav>
@@ -58,8 +58,7 @@
         <div class="services-grid">
 
             @forelse ($jogos as $jogo)
-                <a href="{{ route('games.show', $jogo->slug) }}" class="svc-card" style="text-decoration:none;">
-
+               <a href="{{ route('games.show', ['jogo' => $jogo->slug]) }}" class="svc-card" style="text-decoration:none;">
                     @if ($jogo->banner)
                         <img
                             src="{{ asset('img/games/' . $jogo->banner) }}"

@@ -34,5 +34,20 @@ return [
             'channel' => env('SLACK_BOT_USER_DEFAULT_CHANNEL'),
         ],
     ],
+        'client_area' => [
+    'url' => env('CLIENT_AREA_URL', 'http://127.0.0.1:8001'),
+],
+    'google' => [
+    'client_id' => env('GOOGLE_CLIENT_ID'),
+    'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+    'redirect' => env('GOOGLE_REDIRECT_URI'),
+],
+
+'discord' => [
+    'client_id' => env('DISCORD_CLIENT_ID'),
+    'client_secret' => env('DISCORD_CLIENT_SECRET'),
+    'redirect' => env('DISCORD_REDIRECT_URI'),
+],
 
 ];
+    

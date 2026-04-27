@@ -36,6 +36,7 @@ return new class extends Migration {
             $table->integer('disk');
             $table->foreignId('egg')->nullable()->constrained('pterodactyl_eggs');
             $table->integer('cpu')->nullable();
+            $table->integer('price')->default(0);
             $table->foreignId('location_id')->constrained('location_prod');
             $table->timestamp('created_at')->useCurrent();
         });

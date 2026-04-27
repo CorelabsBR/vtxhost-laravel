@@ -1,863 +1,255 @@
 /* ══════════════════════════════════════════════════════
-   VORTEXHOST — MINECRAFT EXTREMO THEME
+   VORTEXHOST — MINECRAFT CLÁSSICO THEME (MAIN ONLY)
    arquivo: public/css/minecraft.css
    ══════════════════════════════════════════════════════ */
 
-:root {
-    --grass: #55ff55;
-    --grass-dark: #2ca326;
-    --emerald: #00d86f;
-    --diamond: #5ee7ff;
-    --gold: #ffd84a;
-    --redstone: #ff4040;
-
-    --dirt: #5b351c;
-    --dirt-2: #3b2314;
-    --stone: #2d2f32;
-    --stone-2: #181a1d;
-    --obsidian: #08070d;
-    --coal: #0b0d0f;
-
-    --text: #f5f5f5;
-    --muted: rgba(255,255,255,.62);
-    --dim: rgba(255,255,255,.38);
-    --border: rgba(255,255,255,.12);
-
-    --mw: 1200px;
-    --pixel: 4px;
-    --ease: .18s steps(2, end);
+/* --- 1. FONTE PERSONALIZADA GERAL --- */
+@font-face {
+    font-family: 'Minecraft';
+    src: url('/ttf/Minecraftia-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
 }
 
-*,
-*::before,
-*::after {
+* {
+    font-family: 'Minecraft', monospace !important;
     box-sizing: border-box;
+}
+
+:root {
+    --mc-black: #000000;
+    --mc-dark-gray: #555555;
+    --mc-gray: #AAAAAA;
+    --mc-white: #FFFFFF;
+    --text-shadow: 2px 2px 0 #3f3f3f;
+    --ui-border-light: #ffffff;
+    --ui-border-dark: #555555;
+    --mw: 1200px;
+}
+
+/* Reset global para evitar margens indesejadas */
+html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+    background-color: var(--mc-black);
     margin: 0;
     padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    min-height: 100vh;
-    color: var(--text);
-    font-family: "Trebuchet MS", "Segoe UI", system-ui, sans-serif;
-    background:
-        linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.7)),
-        repeating-linear-gradient(0deg, rgba(255,255,255,.025) 0 2px, transparent 2px 32px),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 2px, transparent 2px 32px),
-        linear-gradient(180deg, #102913 0%, #0b1510 38%, #08090d 100%);
+    color: var(--mc-white);
     image-rendering: pixelated;
+}
+
+/* --- 2. HEADER TRANSPARENTE E POR CIMA DA IMAGEM --- */
+/* Aplica 'absolute' APENAS no contêiner pai, preservando o layout do menu de antes */
+header, .site-header {
+    background-color: transparent !important; 
+    position: absolute !important; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999; 
+}
+
+nav, .navbar {
+    background-color: transparent !important;
+}
+
+header *, .site-header *, nav * {
+    font-size: 0.8rem !important;
+}
+
+/* --- 3. BOTOES --- */
+/* --- 3. BOTOES (Estilo UI Vanilla) --- */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    padding: 0.5rem 1rem; /* Garante que o texto não cole nas bordas */
+    background-color: #8b8b8b;
+    color: var(--mc-white);
+    border: 2px solid var(--mc-black);
+    /* Reduzido de 3px para 2px para ficar mais delicado e não bugar botões pequenos */
+    box-shadow: inset 2px 2px 0 var(--ui-border-light), inset -2px -2px 0 var(--ui-border-dark);
+    cursor: pointer;
+    text-transform: none;
+    font-size: 0.9rem;
+    text-shadow: var(--text-shadow);
+    text-decoration: none;
+    transition: none;
+}
+
+.btn:hover {
+    background-color: #9d9d9d;
+    color: var(--mc-white);
+    box-shadow: inset 2px 2px 0 var(--ui-border-light), inset -2px -2px 0 var(--ui-border-dark), 0 0 0 2px var(--mc-white);
+}
+
+.btn:active {
+    box-shadow: inset 2px 2px 0 var(--ui-border-dark), inset -2px -2px 0 var(--ui-border-light);
+    padding-top: calc(0.5rem + 2px); /* Efeito tátil empurrando o texto */
+    padding-bottom: calc(0.5rem - 2px);
+    color: var(--mc-white);
+}
+
+.btn-sm { padding: .3rem .6rem; font-size: .8rem; }
+
+.btn-primary {
+    background-color: #5b874b;
+    box-shadow: inset 2px 2px 0 #85b072, inset -2px -2px 0 #3a5c2d;
+}
+.btn-primary:hover { background-color: #6a9c58; }
+.btn-primary:active { box-shadow: inset 2px 2px 0 #3a5c2d, inset -2px -2px 0 #85b072; }
+
+/* --- 4. SEÇÃO PRINCIPAL (Zerar espaços mortos) --- */
+.minecraftjava-section {
+    padding: 0 !important; 
+    margin: 0 !important;
     display: flex;
     flex-direction: column;
-}
-
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background:
-        radial-gradient(circle at 15% 15%, rgba(85,255,85,.16), transparent 28%),
-        radial-gradient(circle at 82% 12%, rgba(94,231,255,.12), transparent 26%),
-        radial-gradient(circle at 50% 110%, rgba(255,64,64,.13), transparent 34%);
-    z-index: -2;
-}
-
-body::after {
-    content: "";
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-        linear-gradient(45deg, rgba(255,255,255,.03) 25%, transparent 25%),
-        linear-gradient(-45deg, rgba(255,255,255,.03) 25%, transparent 25%);
-    background-size: 16px 16px;
-    opacity: .35;
-    z-index: -1;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-ul {
-    list-style: none;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-    image-rendering: pixelated;
+    align-items: center;
+    width: 100%;
+    background-color: var(--mc-black);
 }
 
 .container {
     max-width: var(--mw);
     margin: 0 auto;
-    padding: 0 1.5rem;
+    width: 100%;
+    padding: 0 1rem; 
 }
 
-/* HEADER */
-
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    background:
-        linear-gradient(180deg, rgba(24,15,8,.96), rgba(12,8,6,.94)),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 16px, transparent 16px 32px);
-    border-bottom: 4px solid #2b160b;
-    box-shadow:
-        0 4px 0 #000,
-        0 12px 30px rgba(0,0,0,.45);
-}
-
-.nav-inner {
-    height: 72px;
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    filter: drop-shadow(4px 4px 0 #000);
-}
-
-#logo_img {
-    height: 42px;
-    width: auto;
-}
-
-.nav-links {
-    display: flex;
-    gap: .65rem;
-    margin-right: auto;
-}
-
-.nav-links a {
-    display: inline-flex;
-    align-items: center;
-    min-height: 36px;
-    padding: .45rem .8rem;
-    color: #e9e0c5;
-    font-size: .78rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-    background: rgba(0,0,0,.22);
-    border: 2px solid rgba(255,255,255,.09);
-    box-shadow: inset 0 -3px 0 rgba(0,0,0,.35);
-    transition: transform var(--ease), border-color var(--ease), background var(--ease);
-}
-
-.nav-links a:hover {
-    transform: translateY(-2px);
-    color: #fff;
-    background: rgba(85,255,85,.12);
-    border-color: rgba(85,255,85,.55);
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: .75rem;
-}
-
-.nav-area-note {
-    font-size: .72rem;
-    color: var(--dim);
-    font-weight: 800;
-    text-transform: uppercase;
-}
-
-.hamburger {
-    display: none;
-    margin-left: auto;
-    background: #2d2f32;
-    border: 3px solid #111;
-    padding: .55rem;
-    cursor: pointer;
-    box-shadow: inset 0 3px 0 rgba(255,255,255,.12), 0 4px 0 #000;
-}
-
-.hamburger span {
-    display: block;
-    width: 24px;
-    height: 3px;
-    margin: 4px 0;
-    background: var(--grass);
-}
-
-.mobile-nav {
-    display: none;
-    padding: 1rem 0;
-    border-top: 3px solid rgba(255,255,255,.08);
-}
-
-.mobile-nav.open {
-    display: grid;
-    gap: .6rem;
-}
-
-.mobile-nav a {
-    padding: .85rem;
-    background: rgba(0,0,0,.35);
-    border: 2px solid rgba(255,255,255,.09);
-    color: var(--muted);
-    font-weight: 900;
-    text-transform: uppercase;
-}
-
-.mobile-nav a:hover {
-    color: white;
-    border-color: var(--grass);
-}
-
-/* BUTTONS */
-
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: .45rem;
-    border: 3px solid #111;
-    cursor: pointer;
-    font-family: inherit;
-    font-weight: 950;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-    border-radius: 0;
-    white-space: nowrap;
-    box-shadow:
-        inset 0 3px 0 rgba(255,255,255,.25),
-        inset 0 -4px 0 rgba(0,0,0,.35),
-        4px 4px 0 #000;
-    transition: transform var(--ease), filter var(--ease), box-shadow var(--ease);
-}
-
-.btn:hover {
-    transform: translate(-2px, -2px);
-    filter: brightness(1.08);
-    box-shadow:
-        inset 0 3px 0 rgba(255,255,255,.25),
-        inset 0 -4px 0 rgba(0,0,0,.35),
-        6px 6px 0 #000;
-}
-
-.btn:active {
-    transform: translate(2px, 2px);
-    box-shadow:
-        inset 0 2px 0 rgba(255,255,255,.18),
-        inset 0 -2px 0 rgba(0,0,0,.3),
-        2px 2px 0 #000;
-}
-
-.btn-sm {
-    font-size: .72rem;
-    padding: .55rem .9rem;
-}
-
-.btn-md {
-    font-size: .85rem;
-    padding: .7rem 1.25rem;
-}
-
-.btn-lg {
-    font-size: .95rem;
-    padding: .85rem 1.6rem;
-}
-
-.btn-primary {
-    background: linear-gradient(180deg, #73ff73, #1fb33b);
-    color: #061006;
-}
-
-.btn-ghost {
-    background: linear-gradient(180deg, #3f4347, #202326);
-    color: #eee;
-}
-
-/* MAIN PAGE */
-
-.minecraftjava-section {
-    position: relative;
-    flex: 1;
-    overflow: hidden;
-    padding: 4rem 1.5rem 6rem;
-    background:
-        linear-gradient(180deg, rgba(13,20,13,.88), rgba(6,7,10,.96)),
-        repeating-linear-gradient(0deg, transparent 0 28px, rgba(255,255,255,.035) 28px 32px),
-        repeating-linear-gradient(90deg, transparent 0 28px, rgba(255,255,255,.035) 28px 32px);
-}
-
-.minecraftjava-section::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background:
-        linear-gradient(180deg, rgba(85,255,85,.16) 0 8px, transparent 8px 100%),
-        linear-gradient(90deg, rgba(91,53,28,.25), transparent 28%, transparent 72%, rgba(91,53,28,.25));
-}
-
-.minecraftjava-section::after {
-    content: "";
-    position: absolute;
-    width: 520px;
-    height: 520px;
-    top: 70px;
-    right: -160px;
-    background:
-        linear-gradient(45deg, transparent 0 30%, rgba(255,255,255,.16) 30% 34%, transparent 34%),
-        radial-gradient(circle, rgba(0,216,111,.14), transparent 68%);
-    filter: blur(.2px);
-    pointer-events: none;
-}
-
-/* HERO */
-
+/* --- 5. BANNER DO TITULO (Imagem 100%) --- */
 .minecraftjava-header {
-    position: relative;
-    z-index: 2;
-    margin-bottom: 3.5rem;
-    padding: 2.4rem 1.5rem;
     text-align: center;
-    background:
-        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.6)),
-        linear-gradient(135deg, rgba(85,255,85,.15), rgba(94,231,255,.08)),
-        repeating-linear-gradient(0deg, rgba(255,255,255,.045) 0 4px, transparent 4px 32px),
-        #17210f;
-    border: 4px solid #111;
-    outline: 4px solid rgba(85,255,85,.18);
-    box-shadow:
-        inset 0 4px 0 rgba(255,255,255,.08),
-        inset 0 -6px 0 rgba(0,0,0,.34),
-        0 12px 0 rgba(0,0,0,.55),
-        0 26px 50px rgba(0,0,0,.45);
-}
+    margin: 0 0 4rem 0;
+    /* Adicionado espaçamento superior para o texto não ficar embaixo do menu */
+    padding: 8rem 2rem 8rem 2rem; 
+    width: 100%; 
+    
+    background-image: url('/img/fundo_mine.png'); 
+    background-size: cover;
+    background-position: center top;
+    
+    border: none;
+    box-shadow: none; 
+    background-color: transparent;
 
-.minecraftjava-header::before {
-    content: "⛏️  ◆  🧱  ◆  💎";
-    display: block;
-    color: rgba(255,255,255,.75);
-    font-size: 1.25rem;
-    margin-bottom: 1rem;
-    letter-spacing: .55rem;
-    text-shadow: 3px 3px 0 #000;
-}
-
-.minecraftjava-eyebrow {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: .5rem;
-    margin-bottom: 1rem;
-    padding: .45rem .85rem;
-    background: #101a10;
-    color: var(--grass);
-    border: 3px solid #050805;
-    box-shadow:
-        inset 0 3px 0 rgba(255,255,255,.12),
-        3px 3px 0 #000;
-    font-size: .65rem;
-    font-weight: 950;
-    letter-spacing: .16em;
-    text-transform: uppercase;
-}
-
-.minecraftjava-eyebrow::before {
-    content: "⬛";
-    color: var(--grass);
 }
 
 .minecraftjava-title {
-    color: #fff;
-    font-size: clamp(2.3rem, 7vw, 5.2rem);
-    font-weight: 1000;
-    line-height: .95;
-    letter-spacing: -.04em;
-    text-transform: uppercase;
-    text-shadow:
-        4px 4px 0 #000,
-        8px 8px 0 rgba(0,0,0,.36),
-        0 0 22px rgba(85,255,85,.28);
+    color: var(--mc-white);
+    font-size: clamp(2.5rem, 6vw, 4rem); 
+    text-shadow: 3px 3px 0 #000; 
+    margin-bottom: 1rem;
+    margin-top: 0;
 }
 
 .minecraftjava-sub {
-    max-width: 620px;
-    margin: 1.2rem auto 0;
-    color: #d8d8d8;
-    font-size: 1rem;
-    font-weight: 700;
-    line-height: 1.65;
+    color: var(--mc-white);
+    font-size: 1.1rem;
+    max-width: 700px;
     text-shadow: 2px 2px 0 #000;
 }
 
-/* PLANS */
-
+/* --- 6. CARDS (Fundo Preto) --- */
 .minecraftjava-plans-grid {
-    position: relative;
-    z-index: 2;
-    max-width: 1120px;
-    margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(235px, 1fr));
-    gap: 1.45rem;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+    gap: 1.5rem;
+    width: 100%;
 }
-
-/* CARD */
 
 .minecraftjava-card {
-    position: relative;
     display: flex;
     flex-direction: column;
-    min-height: 390px;
-    padding: 1.45rem;
-    background:
-        linear-gradient(180deg, rgba(255,255,255,.045), rgba(255,255,255,.015)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.025) 0 8px, transparent 8px 16px),
-        linear-gradient(180deg, #2f3337, #151719);
-    border: 4px solid #090909;
-    outline: 2px solid rgba(255,255,255,.08);
-    box-shadow:
-        inset 0 5px 0 rgba(255,255,255,.1),
-        inset 0 -7px 0 rgba(0,0,0,.38),
-        8px 8px 0 rgba(0,0,0,.78),
-        0 18px 38px rgba(0,0,0,.38);
-    transition: transform var(--ease), filter var(--ease), outline-color var(--ease);
-}
-
-.minecraftjava-card:nth-child(1) {
-    background:
-        linear-gradient(180deg, rgba(90,60,30,.65), rgba(35,22,12,.95)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 8px, transparent 8px 16px);
-}
-
-.minecraftjava-card:nth-child(2) {
-    background:
-        linear-gradient(180deg, rgba(120,126,130,.55), rgba(35,38,42,.96)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 8px, transparent 8px 16px);
-}
-
-.minecraftjava-card:nth-child(3) {
-    background:
-        linear-gradient(180deg, rgba(255,216,74,.45), rgba(83,57,12,.96)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 8px, transparent 8px 16px);
-}
-
-.minecraftjava-card:nth-child(4) {
-    background:
-        linear-gradient(180deg, rgba(94,231,255,.42), rgba(10,52,65,.98)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.04) 0 8px, transparent 8px 16px);
-}
-
-.minecraftjava-card:nth-child(5) {
-    background:
-        linear-gradient(180deg, rgba(68,35,104,.72), rgba(8,7,13,.98)),
-        repeating-linear-gradient(45deg, rgba(255,255,255,.035) 0 8px, transparent 8px 16px);
-}
-
-.minecraftjava-card::before {
-    content: "";
-    position: absolute;
-    inset: 8px;
-    border: 2px solid rgba(255,255,255,.055);
-    pointer-events: none;
-}
-
-.minecraftjava-card::after {
-    content: "CRAFT";
-    position: absolute;
-    top: .75rem;
-    right: .75rem;
-    color: rgba(255,255,255,.08);
-    font-size: .7rem;
-    font-weight: 1000;
-    letter-spacing: .18em;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: var(--mc-black); 
+    border: 2px solid var(--mc-dark-gray);
+    width: 100%;
 }
 
 .minecraftjava-card:hover {
-    transform: translate(-4px, -6px);
-    filter: brightness(1.08);
-    outline-color: rgba(85,255,85,.75);
+    border-color: var(--mc-white);
 }
 
-/* ICON */
-
-.minecraftjava-card-icon,
 .minecraftjava-icon-fallback {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 1.2rem;
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 1rem auto;
+    background-color: var(--mc-black);
+    border: 2px solid var(--mc-dark-gray);
     display: flex;
     align-items: center;
     justify-content: center;
-    background:
-        linear-gradient(180deg, rgba(255,255,255,.12), rgba(0,0,0,.2)),
-        #111;
-    border: 4px solid #050505;
-    box-shadow:
-        inset 0 4px 0 rgba(255,255,255,.14),
-        4px 4px 0 #000;
+    overflow: hidden;
+    padding: 4px;
 }
 
-.minecraftjava-icon-img {
-    width: 36px;
-    height: 36px;
+.minecraftjava-icon-fallback img {
+    width: 100%;
+    height: 100%;
     object-fit: contain;
-    filter:
-        drop-shadow(2px 2px 0 #000)
-        drop-shadow(0 0 8px rgba(85,255,85,.28));
+    display: block;
 }
-
-.minecraftjava-icon-fallback:has(img) {
-    font-size: 0;
-}
-
-/* TEXT */
 
 .minecraftjava-plan-tag {
-    color: rgba(255,255,255,.55);
-    font-size: .62rem;
-    font-weight: 1000;
-    letter-spacing: .18em;
-    text-transform: uppercase;
-    margin-bottom: .35rem;
+    color: var(--mc-gray);
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+    text-shadow: var(--text-shadow);
 }
 
 .minecraftjava-plan-name {
-    min-height: 2.4rem;
-    color: #fff;
-    font-size: 1.25rem;
-    font-weight: 1000;
-    line-height: 1.05;
-    letter-spacing: -.02em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
-    text-shadow: 3px 3px 0 #000;
+    color: var(--mc-white);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    text-shadow: var(--text-shadow);
 }
 
-/* SPECS */
-
 .minecraftjava-plan-specs {
-    overflow: hidden;
-    margin-bottom: 1.35rem;
-    border: 4px solid #080808;
-    background: rgba(0,0,0,.42);
-    box-shadow:
-        inset 0 4px 0 rgba(255,255,255,.06),
-        4px 4px 0 rgba(0,0,0,.65);
+    width: 100%;
+    margin-bottom: 1.5rem;
+    padding: 0.75rem;
+    background-color: rgba(255,255,255,0.05);
+    list-style: none;
 }
 
 .minecraftjava-plan-specs li {
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    gap: .8rem;
-    padding: .75rem .85rem;
-    border-bottom: 2px solid rgba(255,255,255,.08);
-    background:
-        linear-gradient(90deg, rgba(255,255,255,.04), transparent);
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--mc-dark-gray);
 }
-
 .minecraftjava-plan-specs li:last-child {
-    border-bottom: 0;
+    border-bottom: none;
 }
 
-.spec-label {
-    color: rgba(255,255,255,.55);
-    font-size: .7rem;
-    font-weight: 1000;
-    text-transform: uppercase;
-    letter-spacing: .1em;
-}
-
-.spec-value {
-    color: #d7ffd7;
-    font-size: .82rem;
-    font-weight: 1000;
-    text-shadow: 2px 2px 0 #000;
-}
-
-.minecraftjava-plan-specs li:nth-child(1) .spec-value::before {
-    content: "🧠 ";
-}
-
-.minecraftjava-plan-specs li:nth-child(2) .spec-value::before {
-    content: "🧱 ";
-}
-
-.minecraftjava-plan-specs li:nth-child(3) .spec-value::before {
-    content: "⚙️ ";
-}
+.spec-label { color: var(--mc-gray); }
+.spec-value { color: var(--mc-white); font-weight: bold; }
 
 .minecraftjava-divider {
-    margin: auto 0 1.25rem;
-    border: 0;
-    height: 4px;
-    background:
-        repeating-linear-gradient(90deg, #111 0 12px, rgba(255,255,255,.16) 12px 24px);
+    border: none;
+    height: 2px;
+    width: 100%;
+    background-color: var(--mc-dark-gray);
+    margin: auto 0 1rem 0;
 }
 
 .minecraftjava-card-footer {
-    margin-top: auto;
     display: flex;
-}
-
-.minecraftjava-card-footer .btn {
     width: 100%;
     justify-content: center;
 }
-
-/* EMPTY */
-
-.minecraftjava-empty {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 4rem 2rem;
-    background:
-        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015)),
-        #161616;
-    border: 4px solid #090909;
-    box-shadow: 8px 8px 0 #000;
+.minecraftjava-card-footer .btn {
+    width: 100%;
 }
 
-.minecraftjava-empty-icon {
-    display: block;
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    filter: drop-shadow(4px 4px 0 #000);
-}
-
-.minecraftjava-empty h3 {
-    color: white;
-    font-size: 1.4rem;
-    font-weight: 1000;
-    text-transform: uppercase;
-    margin-bottom: .5rem;
-}
-
-.minecraftjava-empty p {
-    color: var(--muted);
-    font-weight: 700;
-}
-
-/* FOOTER */
-
-.site-footer {
-    margin-top: auto;
-    padding: 4rem 0 2rem;
-    background:
-        linear-gradient(180deg, #121416, #070707),
-        repeating-linear-gradient(90deg, rgba(255,255,255,.025) 0 16px, transparent 16px 32px);
-    border-top: 4px solid #111;
-    box-shadow: inset 0 6px 0 rgba(255,255,255,.04);
-}
-
-.footer-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
-    gap: 2.5rem;
-    margin-bottom: 3rem;
-}
-
-.footer-brand p {
-    max-width: 290px;
-    margin: 1rem 0;
-    color: var(--muted);
-    font-size: .86rem;
-    line-height: 1.65;
-    font-weight: 700;
-}
-
-.footer-brand a {
-    color: var(--grass);
-    font-weight: 900;
-}
-
-.footer-status {
-    margin-top: .875rem;
-    display: inline-flex;
-    align-items: center;
-    gap: .45rem;
-    padding: .45rem .75rem;
-    background: rgba(85,255,85,.12);
-    border: 3px solid #071107;
-    color: var(--grass);
-    font-size: .62rem;
-    font-weight: 1000;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    box-shadow: 3px 3px 0 #000;
-}
-
-.footer-status::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background: var(--grass);
-    box-shadow: 0 0 10px var(--grass);
-    animation: pulse 1.4s steps(2, end) infinite;
-}
-
-.footer-col h4 {
-    margin-bottom: 1.1rem;
-    color: rgba(255,255,255,.45);
-    font-size: .7rem;
-    font-weight: 1000;
-    text-transform: uppercase;
-    letter-spacing: .14em;
-}
-
-.footer-links {
-    display: grid;
-    gap: .7rem;
-}
-
-.footer-links a {
-    color: var(--muted);
-    font-size: .84rem;
-    font-weight: 800;
-}
-
-.footer-links a:hover {
-    color: var(--grass);
-}
-
-.social-icons {
-    display: flex;
-    gap: .75rem;
-    flex-wrap: wrap;
-}
-
-.social-icon {
-    width: 40px;
-    height: 40px;
-    display: grid;
-    place-items: center;
-    background: #171a1d;
-    border: 3px solid #070707;
-    color: var(--muted);
-    box-shadow:
-        inset 0 3px 0 rgba(255,255,255,.08),
-        4px 4px 0 #000;
-    transition: transform var(--ease), color var(--ease);
-}
-
-.social-icon svg {
-    width: 17px;
-    height: 17px;
-}
-
-.social-icon:hover {
-    transform: translate(-2px, -2px);
-    color: var(--grass);
-}
-
-.footer-bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    flex-wrap: wrap;
-    padding-top: 1.5rem;
-    border-top: 3px solid rgba(255,255,255,.07);
-}
-
-.footer-copy {
-    color: var(--dim);
-    font-size: .78rem;
-    font-weight: 800;
-}
-
-.footer-payments {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-}
-
-.payment-badge {
-    padding: .3rem .55rem;
-    background: rgba(0,0,0,.35);
-    border: 2px solid rgba(255,255,255,.12);
-    color: var(--muted);
-    font-size: .62rem;
-    font-weight: 1000;
-    text-transform: uppercase;
-}
-
-/* ANIMATION */
-
-@keyframes pulse {
-    0%, 100% {
-        opacity: 1;
-    }
-    50% {
-        opacity: .35;
-    }
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 900px) {
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .footer-brand {
-        grid-column: 1 / -1;
-    }
-}
-
+/* RESPONSIVO */
 @media (max-width: 768px) {
-    .nav-links,
-    .nav-actions,
-    .nav-area-note {
-        display: none;
-    }
-
-    .hamburger {
-        display: block;
-    }
-
-    .minecraftjava-section {
-        padding: 2.5rem 1rem 4rem;
-    }
-
-    .minecraftjava-header {
-        padding: 2rem 1rem;
-    }
-
-    .minecraftjava-header::before {
-        font-size: 1rem;
-        letter-spacing: .3rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .container {
-        padding: 0 1rem;
-    }
-
-    .footer-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer-bottom {
-        align-items: flex-start;
-        flex-direction: column;
-    }
-
-    .minecraftjava-plans-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .minecraftjava-card {
-        min-height: auto;
-    }
+    .minecraftjava-header { padding: 6rem 1rem 3rem 1rem; }
+    .minecraftjava-title { font-size: 2.2rem; }
 }

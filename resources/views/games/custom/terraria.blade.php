@@ -21,7 +21,7 @@
                 <li><a href="{{ url('/') }}">Floresta</a></li>
                 <li><a href="{{ url('/games') }}">Servidores</a></li>
                 <li><a href="{{ url('/vps') }}">VPS</a></li>
-                <li><a href="{{ url('/cpanel') }}">Hospedagem Web</a></li>
+                <li><a href="{{ url('/web') }}">Hospedagem Web</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -39,7 +39,7 @@
             <a href="{{ url('/') }}">Floresta</a>
             <a href="{{ url('/games') }}">Servidores</a>
             <a href="{{ url('/vps') }}">VPS</a>
-            <a href="{{ url('/cpanel') }}">Hospedagem Web</a>
+            <a href="{{ url('/web') }}">Hospedagem Web</a>
             <a href="{{ url('/login') }}">Entrar</a>
             <a href="{{ url('/registro') }}">Criar conta</a>
         </nav>
@@ -105,7 +105,7 @@
                     <hr class="terraria-divider">
 
                     <div class="terraria-card-footer">
-                        <a href="{{ route('carrinho.add', $plan->plan) }}" class="btn btn-primary btn-sm">
+                        <a href="{{ route('cart.checkout', $plan->plan) }}" class="btn btn-primary btn-sm">
                             Invocar servidor →
                         </a>
                     </div>
@@ -150,7 +150,7 @@
                 <ul class="footer-links">
                     <li><a href="{{ url('/games') }}">Servidores de Jogos</a></li>
                     <li><a href="{{ url('/vps') }}">VPS Premium</a></li>
-                    <li><a href="{{ url('/cpanel') }}">Hospedagem Web</a></li>
+                    <li><a href="{{ url('/web') }}">Hospedagem Web</a></li>
                 </ul>
             </div>
 

@@ -3,15 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Models\JogoProd;
+use Illuminate\Support\Collection;
 
 class GameHostingController extends Controller
 {
     public function index()
     {
-        $jogos = JogoProd::query()
-            ->where('ativo', true)
-            ->orderBy('nome')
-            ->get();
+        try {
+            $jogos = JogoProd::query()
+                ->where('ativo', true)
+                ->orderBy('nome')
+                ->get();
+
+            if ($jogos->isEmpty()) {
+                $jogos = $this->fallbackJogos();
+            }
+        } catch (\Throwable $e) {
+            $jogos = $this->fallbackJogos();
+        }
 
         return view('games.index', compact('jogos'));
     }
@@ -33,5 +42,29 @@ class GameHostingController extends Controller
         }
 
         return view('games.show', compact('jogo', 'plans'));
+    }
+
+    private function fallbackJogos(): Collection
+    {
+        return collect([
+            (object) [
+                'nome' => 'Minecraft',
+                'slug' => 'minecraft',
+                'banner' => null,
+                'ativo' => true,
+            ],
+            (object) [
+                'nome' => 'ARK Survival',
+                'slug' => 'ark-survival',
+                'banner' => null,
+                'ativo' => true,
+            ],
+            (object) [
+                'nome' => 'CS2',
+                'slug' => 'cs2',
+                'banner' => null,
+                'ativo' => true,
+            ],
+        ]);
     }
 }

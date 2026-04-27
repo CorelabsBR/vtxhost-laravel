@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\WebHostingController;
 use App\Http\Controllers\GameHostingController;
+use App\Http\Controllers\CheckoutRedirectController;
+use App\Http\Controllers\CartCheckoutController;
+use App\Http\Controllers\ClientAreaAccessController;
+use App\Http\Controllers\Auth\SocialAuthController;
 
 Route::get('/', function () {
     return view('home');
@@ -25,20 +29,27 @@ Route::post('/registro', [AuthController::class, 'register'])->name('registro.po
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::get('/cliente', function () {
-    return view('cliente.dashboard');
-})->middleware('auth')->name('cliente.dashboard');
+Route::get('/cliente', [ClientAreaAccessController::class, 'redirect'])
+    ->middleware('auth')
+    ->name('cliente.dashboard');
+
 Route::get('/recuperar-senha', function () {
     return view('auth.forgot-password');
 })->name('password.request');
 
 Route::get('/web', [WebHostingController::class, 'index'])->name('web');
 
-Route::get('/carrinho/adicionar/{produto}', function ($produto) {
-    return redirect()
-        ->route('web')
-        ->with('success', 'Produto adicionado ao carrinho.');
-})->name('carrinho.add');
-
+Route::post('/carrinho/adicionar/{produto}', [CartCheckoutController::class, 'checkout'])
+    ->middleware('auth')
+    ->name('cart.checkout');
 Route::get('/games', [GameHostingController::class, 'index'])->name('games.index');
 Route::get('/games/{jogo:slug}', [GameHostingController::class, 'show'])->name('games.show');
+
+    Route::middleware(['auth'])->post('/checkout/redirecionar', [CheckoutRedirectController::class, 'redirect'])
+        ->name('checkout.redirect');
+
+    Route::get('/auth/{provider}/redirect', [SocialAuthController::class, 'redirect'])
+        ->name('social.redirect');
+
+    Route::get('/auth/{provider}/callback', [SocialAuthController::class, 'callback'])
+        ->name('social.callback');

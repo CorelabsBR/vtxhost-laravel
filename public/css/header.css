@@ -8,7 +8,10 @@
     --ease: all 0.3s ease;
     --r-sm: 4px;
 }
-
+#logo_img{
+    height: 60px;
+    width: 60px;
+}
 .site-header {
     position: absolute;
     top: 0;

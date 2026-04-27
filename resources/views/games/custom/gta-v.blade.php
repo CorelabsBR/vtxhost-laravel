@@ -21,7 +21,7 @@
                 <li><a href="{{ url('/') }}">Início</a></li>
                 <li><a href="{{ url('/games') }}">Hospedagem de Jogos</a></li>
                 <li><a href="{{ url('/vps') }}">VPS</a></li>
-                <li><a href="{{ url('/cpanel') }}">Hospedagem Web</a></li>
+                <li><a href="{{ url('/web') }}">Hospedagem Web</a></li>
             </ul>
 
             <div class="nav-actions">
@@ -39,7 +39,7 @@
             <a href="{{ url('/') }}">Início</a>
             <a href="{{ url('/games') }}">Hospedagem de Jogos</a>
             <a href="{{ url('/vps') }}">VPS</a>
-            <a href="{{ url('/cpanel') }}">Hospedagem Web</a>
+            <a href="{{ url('/web') }}">Hospedagem Web</a>
             <a href="{{ url('/login') }}">Entrar</a>
             <a href="{{ url('/registro') }}">Criar conta</a>
         </nav>
@@ -90,7 +90,7 @@
                     </ul>
 
                     <div class="gta5-card-footer">
-                        <a href="{{ route('carrinho.add', $plan->plan) }}" class="btn btn-primary btn-md">Selecionar plano →</a>
+                        <a href="{{ route('cart.checkout', $plan->plan) }}" class="btn btn-primary btn-md">Selecionar plano →</a>
                     </div>
                 </article>
             @empty
@@ -117,7 +117,7 @@
                 <span class="footer-status">SISTEMAS ONLINE</span>
             </div>
 
-            <div class="footer-col"><h4>Serviços</h4><ul class="footer-links"><li><a href="{{ url('/cpanel') }}">HospedaWeb</a></li><li><a href="{{ url('/vps') }}">VPS Premium</a></li><li><a href="{{ url('/games') }}">Servidores de Jogos</a></li></ul></div>
+            <div class="footer-col"><h4>Serviços</h4><ul class="footer-links"><li><a href="{{ url('/web') }}">HospedaWeb</a></li><li><a href="{{ url('/vps') }}">VPS Premium</a></li><li><a href="{{ url('/games') }}">Servidores de Jogos</a></li></ul></div>
             <div class="footer-col"><h4>Suporte</h4><ul class="footer-links"><li><a href="{{ url('/cliente') }}">Área do Cliente</a></li><li><a href="{{ url('/login') }}">Login</a></li><li><a href="{{ url('/registro') }}">Criar Conta</a></li><li><a href="mailto:contato@vortexhost.com.br">Abrir Ticket</a></li></ul></div>
             <div class="footer-col"><h4>Legal</h4><ul class="footer-links"><li><a href="#">Termos de Serviço</a></li><li><a href="#">Política de Privacidade</a></li><li><a href="#">Política de Reembolso</a></li></ul></div>
             <div class="footer-col"><h4>Pagamentos</h4><div class="footer-payments"><span>PIX</span><span>Cartão</span><span>Boleto</span><span>PayPal</span></div></div>

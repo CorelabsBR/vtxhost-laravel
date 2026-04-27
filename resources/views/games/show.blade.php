@@ -70,9 +70,9 @@
                     <hr class="game-divider">
 
                     <div class="game-card-footer">
-                        <a href="{{ route('carrinho.add', $plan->plan) }}" class="btn btn-primary btn-sm">
-                            Selecionar →
-                        </a>
+<form method="POST" action="{{ route('cart.checkout', ['produto' => $plan->plan]) }}">
+    @csrf
+    <button type="submit" class="btn btn-primary btn-sm">
                     </div>
 
                 </div>
