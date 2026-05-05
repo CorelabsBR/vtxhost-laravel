@@ -37,7 +37,7 @@ class VortexSeeder extends Seeder
 
         DB::table('jogos_prod')->insert([
             ['id' => 1, 'nome' => 'Minecraft Java', 'slug' => 'minecraft-java', 'banner' => 'images.jpeg', 'icon' => 'minecraftjava.png', 'ativo' => true],
-            ['id' => 2, 'nome' => 'Minecraft Bedrock', 'slug' => 'minecraft-bedrock', 'banner' => 'download.jpeg', 'icon' => null, 'ativo' => true],
+            ['id' => 2, 'nome' => 'Minecraft Bedrock', 'slug' => 'minecraft-bedrock', 'banner' => 'download.jpeg', 'icon' => 'minecraftbedrock.png', 'ativo' => true],
             ['id' => 3, 'nome' => 'Terraria', 'slug' => 'terraria', 'banner' => 'terraria.jpeg', 'icon' => 'terraria.png', 'ativo' => true],
             ['id' => 4, 'nome' => 'GTA V', 'slug' => 'gta-v', 'banner' => 'gta-v-banner.webp', 'icon' => null, 'ativo' => true],
             ['id' => 5, 'nome' => 'GTA SA', 'slug' => 'gta-sa', 'banner' => '80601.jpg', 'icon' => 'gtasa.png', 'ativo' => true],
@@ -74,6 +74,12 @@ DB::table('plans')->insert([
     ['plan' => 3, 'name' => 'Tier Ouro', 'jogo_id' => 1, 'ram' => 8000, 'disk' => 80000, 'egg' => 1, 'cpu' => null, 'price' => 4999, 'location_id' => 1],
     ['plan' => 4, 'name' => 'Tier Diamante', 'jogo_id' => 1, 'ram' => 0, 'disk' => 100000, 'egg' => 1, 'cpu' => null, 'price' => 5949, 'location_id' => 1],
     ['plan' => 5, 'name' => 'Tier Netherite', 'jogo_id' => 1, 'ram' => 0, 'disk' => 0, 'egg' => 1, 'cpu' => null, 'price' => 7049, 'location_id' => 1],
+
+    ['plan' => 6, 'name' => 'Tier Carvão', 'jogo_id' => 2, 'ram' => 2000, 'disk' => 40000, 'egg' => 1, 'cpu' => null, 'price' => 1999, 'location_id' => 1],
+    ['plan' => 7, 'name' => 'Tier Ferro', 'jogo_id' => 2, 'ram' => 4000, 'disk' => 80000, 'egg' => 1, 'cpu' => null, 'price' => 3849, 'location_id' => 1],
+    ['plan' => 8, 'name' => 'Tier Ouro', 'jogo_id' => 2, 'ram' => 8000, 'disk' => 80000, 'egg' => 1, 'cpu' => null, 'price' => 4999, 'location_id' => 1],
+    ['plan' => 9, 'name' => 'Tier Diamante', 'jogo_id' => 2, 'ram' => 0, 'disk' => 100000, 'egg' => 1, 'cpu' => null, 'price' => 5949, 'location_id' => 1],
+    ['plan' => 10, 'name' => 'Tier Netherite', 'jogo_id' => 2, 'ram' => 0, 'disk' => 0, 'egg' => 1, 'cpu' => null, 'price' => 7049, 'location_id' => 1],
 
     // gta v
     ['plan' => 16, 'name' => 'Tier Vagos', 'jogo_id' => 4, 'ram' => 4000, 'disk' => 100000, 'egg' => 4, 'cpu' => null, 'price' => 8000, 'location_id' => 1],

@@ -14,30 +14,40 @@ class User extends Authenticatable
     const CREATED_AT = 'criado_em';
     const UPDATED_AT = 'atualizado_em';
 
-    protected $fillable = [
-        'nome',
-        'email',
-        'senha',
-        'cpf_cnpj',
-        'celular',
-        'cep',
-        'rua',
-        'numero',
-        'complemento',
-        'bairro',
-        'cidade',
-        'estado',
-        'pais',
-        'data_nasc',
-        'tipo_usuario',
-    ];
+protected $fillable = [
+    'nome',
+    'email',
+    'senha',
+    'cpf_cnpj',
+    'celular',
+    'cep',
+    'rua',
+    'numero',
+    'complemento',
+    'bairro',
+    'cidade',
+    'estado',
+    'pais',
+    'data_nasc',
+    'tipo_usuario',
+    'google_id',
+    'discord_id',
+    'avatar',
+    'provider',
+    'email_verified_at',
+];
 
-    protected $hidden = [
-        'senha',
-    ];
+protected $hidden = [
+    'senha',
+];
 
-    public function getAuthPassword()
-    {
-        return $this->senha;
-    }
+protected $casts = [
+    'email_verified_at' => 'datetime',
+    'data_nasc' => 'date',
+];
+
+public function getAuthPassword()
+{
+    return $this->senha;
+}
 }

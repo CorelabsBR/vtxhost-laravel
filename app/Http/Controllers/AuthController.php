@@ -10,9 +10,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    // =========================
-    // VIEWS
-    // =========================
     public function showLogin()
     {
         if (Auth::check()) {
@@ -31,42 +28,51 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    // =========================
-    // REGISTER
-    // =========================
- public function register(Request $request)
-{
-    $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:user,email',
-        'password' => 'required|confirmed|min:6',
-    ]);
+    public function register(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:user,email',
+            'password' => 'required|confirmed|min:6',
 
-    User::create([
-        'nome' => $request->name,
-        'email' => $request->email,
-        'senha' => Hash::make($request->password),
+            'cpf_cnpj' => 'nullable|string|max:20|unique:user,cpf_cnpj',
+            'celular' => 'nullable|string|max:20',
+            'cep' => 'nullable|string|max:20',
+            'rua' => 'nullable|string|max:255',
+            'numero' => 'nullable|string|max:20',
+            'complemento' => 'nullable|string|max:255',
+            'bairro' => 'nullable|string|max:255',
+            'cidade' => 'nullable|string|max:255',
+            'estado' => 'nullable|string|max:255',
+            'pais' => 'nullable|string|max:255',
+            'data_nasc' => 'nullable|date',
+        ]);
 
-        'cpf_cnpj' => $request->cpf_cnpj,
-        'celular' => $request->celular,
-        'cep' => $request->cep,
-        'rua' => $request->rua,
-        'numero' => $request->numero,
-        'complemento' => $request->complemento,
-        'bairro' => $request->bairro,
-        'cidade' => $request->cidade,
-        'estado' => $request->estado,
-        'pais' => $request->pais,
-        'data_nasc' => $request->data_nasc,
+        User::create([
+            'nome' => $request->name,
+            'email' => $request->email,
+            'senha' => Hash::make($request->password),
 
-        'tipo_usuario' => 'cliente',
-    ]);
+            'cpf_cnpj' => $request->cpf_cnpj,
+            'celular' => $request->celular,
+            'cep' => $request->cep,
+            'rua' => $request->rua,
+            'numero' => $request->numero,
+            'complemento' => $request->complemento,
+            'bairro' => $request->bairro,
+            'cidade' => $request->cidade,
+            'estado' => $request->estado,
+            'pais' => $request->pais,
+            'data_nasc' => $request->data_nasc,
 
-    return redirect()->route('login')->with('success', 'Conta criada com sucesso.');
-}
-    // =========================
-    // LOGIN
-    // =========================
+            'tipo_usuario' => 'cliente',
+        ]);
+
+        return redirect()
+            ->route('login')
+            ->with('success', 'Conta criada com sucesso.');
+    }
+
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -82,26 +88,18 @@ class AuthController extends Controller
 
         if (!Auth::attempt([
             'email' => $credentials['email'],
-            'password' => $credentials['password']
+            'password' => $credentials['password'],
         ], $remember)) {
             throw ValidationException::withMessages([
                 'email' => 'Credenciais inválidas, товарищ.',
             ]);
         }
-        if (Auth::attempt($credentials)) {
-          $request->session()->regenerate();
-
-             return redirect()->intended('/cliente');
-}
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('/cliente'));
+        return redirect()->intended('/cliente');
     }
 
-    // =========================
-    // LOGOUT
-    // =========================
     public function logout(Request $request)
     {
         Auth::logout();

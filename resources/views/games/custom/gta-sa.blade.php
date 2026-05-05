@@ -90,7 +90,7 @@
                     </ul>
 
                     <div class="sa-card-footer">
-                        <a href="{{ route('cart.checkout', $plan->plan) }}" class="btn btn-primary btn-md">Bora fechar →</a>
+                        <a href="{{ route('cart.addPlanPlan', $plan->plan) }}" class="btn btn-primary btn-md">Bora fechar →</a>
                     </div>
                 </article>
             @empty

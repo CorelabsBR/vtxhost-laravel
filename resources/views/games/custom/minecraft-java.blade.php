@@ -85,7 +85,7 @@
 
                     <div class="minecraftjava-card-footer">
                         @if ($planId)
-                            <form method="POST" action="{{ route('cart.checkout', ['produto' => $planId]) }}">
+                            <form method="POST" action="{{ route('cart.addPlan', $planId) }}">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">
                                     Craftar servidor →

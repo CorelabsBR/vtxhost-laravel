@@ -726,3 +726,27 @@ input[type="checkbox"] {
         grid-template-columns: 1fr;
     }
 }
+.auth-error-box {
+    background: rgba(255, 0, 0, 0.08);
+    border: 1px solid rgba(255, 0, 0, 0.3);
+    color: #ff6b6b;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}
+
+.auth-error-box ul {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.auth-success-box {
+    background: rgba(0, 255, 100, 0.08);
+    border: 1px solid rgba(0, 255, 100, 0.3);
+    color: #00ff88;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+}

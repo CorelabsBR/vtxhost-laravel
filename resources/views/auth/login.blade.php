@@ -62,6 +62,21 @@
 
                 <h1 class="auth-title">Entrar</h1>
                 <p class="auth-subtitle">Acesse sua área do cliente.</p>
+                @if ($errors->any())
+    <div class="auth-error-box">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>⚠ {{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
+@if (session('success'))
+    <div class="auth-success-box">
+        ✔ {{ session('success') }}
+    </div>
+@endif
 
                 <form method="POST" action="{{ route('login.post') }}" novalidate>
     @csrf

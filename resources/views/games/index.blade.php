@@ -39,19 +39,17 @@
         </nav>
     </div>
 </header>
-
 <script src="{{ asset('js/header.js') }}"></script>
-@extends('layouts.app')
-
-@section('title', 'Servidores de Jogos - VortexHost')
-
-@section('content')
 
 <section class="services-section">
     <div class="container">
 
         <div class="section-head center">
-            <h1 class="section-title">Servidores de Jogos</h1>
+            <h1 class="section-title">
+                
+                Servidores de Jogos
+
+            </h1>
             <p class="section-sub">Escolha seu jogo e configure seu servidor.</p>
         </div>
 

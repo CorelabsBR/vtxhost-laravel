@@ -105,7 +105,7 @@
                     <hr class="terraria-divider">
 
                     <div class="terraria-card-footer">
-                        <a href="{{ route('cart.checkout', $plan->plan) }}" class="btn btn-primary btn-sm">
+                        <a href="{{ route('cart.addPlan', $plan->plan) }}" class="btn btn-primary btn-sm">
                             Invocar servidor →
                         </a>
                     </div>

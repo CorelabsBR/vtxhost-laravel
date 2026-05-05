@@ -30,12 +30,11 @@
 }
 
 /* Animação de fundo */
-/* @keyframes bg-zoom-slow {
+@keyframes bg-zoom-slow {
     0%   { background-size: 110%; background-position: 50% 50%; }
     35%  { background-size: 135%; background-position: 48% 52%; }
     100% { background-size: 110%; background-position: 50% 50%; }
-} */
-
+}
 /* Container — padding lateral fluido, sem margin-top fixo */
 .hero > .container {
     position: relative;

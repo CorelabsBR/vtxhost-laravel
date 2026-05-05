@@ -12,7 +12,7 @@ class GameHostingController extends Controller
         try {
             $jogos = JogoProd::query()
                 ->where('ativo', true)
-                ->orderBy('nome')
+                ->orderBy('id', 'asc')
                 ->get();
 
             if ($jogos->isEmpty()) {
@@ -30,9 +30,7 @@ class GameHostingController extends Controller
         abort_if(! $jogo->ativo, 404);
 
         $plans = $jogo->plans()
-            ->orderByRaw('ram = 0')
-            ->orderBy('ram')
-            ->orderBy('disk')
+        ->orderBy('plan', 'asc')
             ->get();
 
         $customView = 'games.custom.' . $jogo->slug;
