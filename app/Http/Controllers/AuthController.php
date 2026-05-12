@@ -30,47 +30,86 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:user,email',
-            'password' => 'required|confirmed|min:6',
-
-            'cpf_cnpj' => 'nullable|string|max:20|unique:user,cpf_cnpj',
-            'celular' => 'nullable|string|max:20',
-            'cep' => 'nullable|string|max:20',
-            'rua' => 'nullable|string|max:255',
-            'numero' => 'nullable|string|max:20',
-            'complemento' => 'nullable|string|max:255',
-            'bairro' => 'nullable|string|max:255',
-            'cidade' => 'nullable|string|max:255',
-            'estado' => 'nullable|string|max:255',
-            'pais' => 'nullable|string|max:255',
-            'data_nasc' => 'nullable|date',
+        $data = $request->validate([
+            'email' => ['required', 'email', 'max:255', 'unique:user,email'],
+            'password' => ['required', 'confirmed', 'min:6'],
         ]);
 
-        User::create([
-            'nome' => $request->name,
-            'email' => $request->email,
-            'senha' => Hash::make($request->password),
-
-            'cpf_cnpj' => $request->cpf_cnpj,
-            'celular' => $request->celular,
-            'cep' => $request->cep,
-            'rua' => $request->rua,
-            'numero' => $request->numero,
-            'complemento' => $request->complemento,
-            'bairro' => $request->bairro,
-            'cidade' => $request->cidade,
-            'estado' => $request->estado,
-            'pais' => $request->pais,
-            'data_nasc' => $request->data_nasc,
-
+        $user = User::create([
+            'email' => $data['email'],
+            'senha' => Hash::make($data['password']),
             'tipo_usuario' => 'cliente',
         ]);
 
+        Auth::login($user);
+
+        $request->session()->regenerate();
+
         return redirect()
-            ->route('login')
-            ->with('success', 'Conta criada com sucesso.');
+            ->route('cadastro.completar')
+            ->with('success', 'Conta criada. Complete seu cadastro para continuar.');
+    }
+
+    public function showCompleteProfile()
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        if (!empty($user->profile_completed_at)) {
+            return redirect()->route('cliente.dashboard');
+        }
+
+        return view('auth.complete-profile');
+    }
+
+    public function completeProfile(Request $request)
+    {
+        $user = Auth::user();
+
+        if (!$user) {
+            return redirect()->route('login');
+        }
+
+        $data = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'cpf_cnpj' => ['required', 'string', 'max:20', 'unique:user,cpf_cnpj,' . $user->id],
+            'celular' => ['required', 'string', 'max:20'],
+            'data_nasc' => ['required', 'date'],
+
+            'cep' => ['required', 'string', 'max:20'],
+            'rua' => ['required', 'string', 'max:255'],
+            'numero' => ['required', 'string', 'max:20'],
+            'complemento' => ['nullable', 'string', 'max:255'],
+            'bairro' => ['required', 'string', 'max:255'],
+            'cidade' => ['required', 'string', 'max:255'],
+            'estado' => ['required', 'string', 'max:255'],
+            'pais' => ['required', 'string', 'max:255'],
+        ]);
+
+        $user->update([
+            'nome' => $data['name'],
+            'cpf_cnpj' => $data['cpf_cnpj'],
+            'celular' => $data['celular'],
+            'data_nasc' => $data['data_nasc'],
+
+            'cep' => $data['cep'],
+            'rua' => $data['rua'],
+            'numero' => $data['numero'],
+            'complemento' => $data['complemento'] ?? null,
+            'bairro' => $data['bairro'],
+            'cidade' => $data['cidade'],
+            'estado' => $data['estado'],
+            'pais' => $data['pais'],
+
+            'profile_completed_at' => now(),
+        ]);
+
+        return redirect()
+            ->route('cliente.dashboard')
+            ->with('success', 'Cadastro completo com sucesso.');
     }
 
     public function login(Request $request)
@@ -96,6 +135,10 @@ class AuthController extends Controller
         }
 
         $request->session()->regenerate();
+
+        if (empty(Auth::user()->profile_completed_at)) {
+            return redirect()->route('cadastro.completar');
+        }
 
         return redirect()->intended('/cliente');
     }

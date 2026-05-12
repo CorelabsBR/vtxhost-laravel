@@ -11,22 +11,26 @@ use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\MercadoPagoWebhookController;
 
 Route::get('/', fn () => view('home'))->name('home');
-
-<<<<<<< HEAD
-Route::get('/host', fn () => view('host'))->name('host');
-Route::get('/vps', fn () => view('vps'))->name('vps');
-=======
 Route::get('/vps', fn () => view('vps.index'))->name('vps.index');
 Route::get('/termos', fn () => view('termos.service'))->name('termos.service');
 Route::get('/politica-privacidade', fn () => view('privacidade.index'))->name('privacidade');
 Route::get('/reembolso', fn () => view('reembolso.index'))->name('reembolso');
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login'])->name('login.post');
 
-Route::get('/registro', [AuthController::class, 'showRegister'])->name('registro');
-Route::post('/registro', [AuthController::class, 'register'])->name('registro.post');
+Route::middleware('guest')->group(function () {
+    Route::get('/registro', [AuthController::class, 'showRegister'])->name('registro');
+    Route::post('/registro', [AuthController::class, 'register'])->name('registro.post');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/completar-cadastro', [AuthController::class, 'showCompleteProfile'])
+        ->name('cadastro.completar');
+
+    Route::post('/completar-cadastro', [AuthController::class, 'completeProfile'])
+        ->name('cadastro.completar.post');
+});
 
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
@@ -47,10 +51,7 @@ Route::get('/auth/{provider}/callback', [SocialAuthController::class, 'callback'
 Route::middleware('auth')->group(function () {
     Route::get('/carrinho', [CartController::class, 'index'])->name('cart.index');
     Route::post('/carrinho/add-plan/{plan}', [CartController::class, 'addPlan'])->name('cart.addPlan');
-<<<<<<< HEAD
-=======
     Route::post('/carrinho/produto/{product}', [CartController::class, 'addProduct'])->name('cart.addProduct');
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
     Route::patch('/carrinho/update/{cartItem}', [CartController::class, 'update'])->name('cart.update');
     Route::delete('/carrinho/remove/{cartItem}', [CartController::class, 'remove'])->name('cart.remove');
     Route::delete('/carrinho/clear', [CartController::class, 'clear'])->name('cart.clear');
