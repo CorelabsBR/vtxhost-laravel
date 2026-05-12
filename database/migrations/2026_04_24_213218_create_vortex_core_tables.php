@@ -12,7 +12,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome');
             $table->string('email')->unique();
-            $table->string('senha');
+            $table->string('senha')->nullable();
 
             $table->string('cpf_cnpj', 20)->nullable()->unique();
             $table->string('celular', 20)->nullable();
@@ -29,7 +29,7 @@ return new class extends Migration
             $table->date('data_nasc')->nullable();
 
             $table->enum('tipo_usuario', ['cliente', 'root'])->default('cliente');
-
+            $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('criado_em')->useCurrent();
             $table->timestamp('atualizado_em')->useCurrent()->useCurrentOnUpdate();
         });

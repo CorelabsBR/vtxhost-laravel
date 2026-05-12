@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
     <link rel="stylesheet" href="{{ asset('css/vps.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dash.css') }}">
 
 
     @stack('styles')

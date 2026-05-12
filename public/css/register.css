@@ -264,3 +264,44 @@
         flex-direction: column;
     }
 }
+.register-alert {
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.1rem;
+
+    border-radius: 14px;
+    border: 1px solid var(--border);
+
+    font-size: .92rem;
+    line-height: 1.6;
+}
+
+.register-alert ul {
+    margin-top: .5rem;
+    padding-left: 1rem;
+}
+
+.register-alert-error {
+    background: rgba(255, 70, 70, 0.08);
+    border-color: rgba(255, 70, 70, 0.25);
+    color: #ffb3b3;
+}
+
+.register-alert-success {
+    background: rgba(61,255,160,.08);
+    border-color: rgba(61,255,160,.22);
+    color: #9fffcf;
+}
+
+.register-error {
+    display: block;
+    margin-top: .45rem;
+
+    color: #ff8e8e;
+    font-size: .82rem;
+    font-weight: 600;
+}
+
+.register-input.is-invalid {
+    border-color: rgba(255, 70, 70, .5);
+    box-shadow: 0 0 0 4px rgba(255, 70, 70, .08);
+}

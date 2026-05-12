@@ -11,13 +11,14 @@ return new class extends Migration
      */
 public function up(): void
 {
-    Schema::table('users', function (Blueprint $table) {
+    Schema::table('user', function (Blueprint $table) {
         $table->string('google_id')->nullable()->unique();
         $table->string('discord_id')->nullable()->unique();
         $table->string('avatar')->nullable();
         $table->string('provider')->nullable();
         $table->timestamp('email_verified_at')->nullable()->change();
-        $table->string('password')->nullable()->change();
+        $table->string('senha')->nullable()->change();
+        $table ->string('remember_token')->nullable();
     });
 }
 
@@ -26,7 +27,7 @@ public function up(): void
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('user', function (Blueprint $table) {
             //
         });
     }
