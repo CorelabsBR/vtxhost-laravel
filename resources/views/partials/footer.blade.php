@@ -12,21 +12,12 @@
                     estabilidade e suporte que não some igual aldeão de noite.
                 </p>
 
-<<<<<<< HEAD
-                <a href="mailto:contato@vortexhost.com.br">
-                    contato@vortexhost.com.br
-                </a>
-
-                <span class="footer-status">
-                    Sistema online
-=======
                 <a href="mailto:contato@corelabs.dev.br">
                     contato@Corelabs.dev.br
                 </a>
 
                 <span class="footer-status">
                     Sistemas online
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                 </span>
             </div>
 
@@ -52,15 +43,9 @@
             <div class="footer-col">
                 <h4>Legal</h4>
                 <ul class="footer-links">
-<<<<<<< HEAD
-                    <li><a href="#">Termos de Serviço</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Política de Reembolso</a></li>
-=======
                     <li><a href="{{ url('/termos') }}">Termos de Serviço</a></li>
                     <li><a href="{{ url('/politica-privacidade') }}">Política de Privacidade</a></li>
                     <li><a href="{{ url('/reembolso') }}">Política de Reembolso</a></li>
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                 </ul>
             </div>
 

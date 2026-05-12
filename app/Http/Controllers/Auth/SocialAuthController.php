@@ -44,6 +44,7 @@ class SocialAuthController extends Controller
                 'email_verified_at' => now(),
 
                 'tipo_usuario' => 'cliente',
+                'profile_completed_at' => null,
             ]);
         } else {
             $user->update([
@@ -56,6 +57,14 @@ class SocialAuthController extends Controller
 
         Auth::login($user, true);
 
+        request()->session()->regenerate();
+
+        if (empty($user->profile_completed_at)) {
+            return redirect()
+                ->route('cadastro.completar')
+                ->with('success', 'Conta conectada. Complete seu cadastro para continuar.');
+        }
+
         return redirect()->intended('/cliente');
     }
-}   
+}

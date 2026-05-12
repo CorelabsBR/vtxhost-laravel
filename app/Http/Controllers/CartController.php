@@ -25,74 +25,31 @@ class CartController extends Controller
     {
         $plan = Plan::where('plan', $plan)->firstOrFail();
 
-<<<<<<< HEAD
-        $product = Product::where('plan', $plan->plan)->first();
-
-        if (!$product) {
-            $product = Product::create([
-=======
         $product = Product::firstOrCreate(
             ['plan' => $plan->plan],
             [
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                 'nome' => $plan->name,
                 'descricao' => 'Servidor de jogo',
                 'preco' => $plan->price / 100,
                 'categoria_id' => 2,
                 'jogo_id' => $plan->jogo_id,
                 'local_id' => $plan->location_id,
-<<<<<<< HEAD
-                'plan' => $plan->plan,
-=======
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                 'ram' => $plan->ramFormatada(),
                 'armazenamento' => $plan->discoFormatado(),
                 'processamento' => $plan->cpuFormatada(),
                 'ddos_protection' => true,
                 'featured' => false,
                 'sort_order' => $plan->plan,
-<<<<<<< HEAD
-            ]);
-        }
-
-        if (!$product || !$product->id) {
-            abort(500, 'Produto não foi criado corretamente.');
-        }
-
-        $item = CartItem::where('user_id', Auth::id())
-            ->where('product_id', $product->id)
-            ->first();
-
-        if ($item) {
-            $item->quantidade++;
-            $item->save();
-        } else {
-            CartItem::create([
-                'user_id' => Auth::id(),
-                'product_id' => $product->id,
-                'quantidade' => 1,
-            ]);
-        }
-=======
             ]
         );
 
         $this->addProductToCart($product, 1);
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 
         return redirect()
             ->route('cart.index')
             ->with('success', 'Plano adicionado ao carrinho.');
     }
 
-<<<<<<< HEAD
-    public function add(Request $request, Product $product)
-    {
-        abort_if(!$product || !$product->id, 404);
-
-        $quantidade = (int) $request->input('quantidade', 1);
-
-=======
     public function addProduct(Request $request, Product $product)
     {
         $quantidade = (int) $request->input('quantidade', 1);
@@ -112,7 +69,6 @@ class CartController extends Controller
     {
         abort_if(!$product->id, 404);
 
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
         $item = CartItem::where('user_id', Auth::id())
             ->where('product_id', $product->id)
             ->first();
@@ -120,17 +76,6 @@ class CartController extends Controller
         if ($item) {
             $item->quantidade += $quantidade;
             $item->save();
-<<<<<<< HEAD
-        } else {
-            CartItem::create([
-                'user_id' => Auth::id(),
-                'product_id' => $product->id,
-                'quantidade' => $quantidade,
-            ]);
-        }
-
-        return redirect()->route('cart.index');
-=======
             return;
         }
 
@@ -139,7 +84,6 @@ class CartController extends Controller
             'product_id' => $product->id,
             'quantidade' => $quantidade,
         ]);
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
     }
 
     public function update(Request $request, CartItem $cartItem)
