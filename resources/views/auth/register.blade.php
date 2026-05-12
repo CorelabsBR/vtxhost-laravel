@@ -17,7 +17,10 @@
 </a>
 
 <section class="register-split">
+<<<<<<< HEAD
 
+=======
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
     <aside class="register-panel">
         <div class="register-panel-inner">
             <img src="{{ asset('img/logo_vtxhost.png') }}" alt="VortexHost" class="register-logo">
@@ -25,7 +28,11 @@
             <h2 class="register-panel-title">Comece com estrutura de verdade.</h2>
 
             <p class="register-panel-sub">
+<<<<<<< HEAD
                 Crie sua conta e gerencie hospedagem, VPS e servidores de jogos em um só lugar.
+=======
+                Crie sua conta e depois complete seu cadastro para contratar serviços.
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
             </p>
 
             <div class="register-stats">
@@ -47,14 +54,20 @@
 
     <div class="register-form-side">
         <div class="register-card">
+<<<<<<< HEAD
 
             <h1 class="register-title">Criar conta</h1>
             <p class="register-subtitle">Preencha seus dados para acessar a área do cliente.</p>
+=======
+            <h1 class="register-title">Criar conta</h1>
+            <p class="register-subtitle">Primeiro, crie seu acesso. Depois você completa seus dados.</p>
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 
             <form method="POST" action="{{ route('registro.post') }}" class="register-form" novalidate>
                 @csrf
 
                 <div class="register-grid">
+<<<<<<< HEAD
 
                     <div class="register-group full">
                         <label class="register-label" for="name">Nome completo</label>
@@ -62,10 +75,13 @@
                                value="{{ old('name') }}" required placeholder="João Silva">
                     </div>
 
+=======
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                     <div class="register-group full">
                         <label class="register-label" for="email">E-mail</label>
                         <input class="register-input" type="email" id="email" name="email"
                                value="{{ old('email') }}" required placeholder="seu@email.com">
+<<<<<<< HEAD
                     </div>
 
                     <div class="register-group">
@@ -132,6 +148,12 @@
                         <label class="register-label" for="pais">País</label>
                         <input class="register-input" type="text" id="pais" name="pais"
                                value="{{ old('pais', 'Brasil') }}">
+=======
+
+                        @error('email')
+                            <small class="register-error">{{ $message }}</small>
+                        @enderror
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                     </div>
 
                     <div class="register-group full">
@@ -143,19 +165,34 @@
                                 👁
                             </button>
                         </div>
+<<<<<<< HEAD
+=======
+
+                        @error('password')
+                            <small class="register-error">{{ $message }}</small>
+                        @enderror
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                     </div>
 
                     <div class="register-group full">
                         <label class="register-label" for="password_confirmation">Confirmar senha</label>
                         <div class="register-password-wrapper">
+<<<<<<< HEAD
                             <input class="register-input" type="password" id="password_confirmation" name="password_confirmation"
                                    required placeholder="Repita a senha">
+=======
+                            <input class="register-input" type="password" id="password_confirmation"
+                                   name="password_confirmation" required placeholder="Repita a senha">
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                             <button type="button" class="register-password-toggle" onclick="toggleRegisterPassword('password_confirmation')">
                                 👁
                             </button>
                         </div>
                     </div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                 </div>
 
                 <button class="register-submit" type="submit">
@@ -167,10 +204,15 @@
                 Já tem uma conta?
                 <a href="{{ route('login') }}">Entrar</a>
             </p>
+<<<<<<< HEAD
 
         </div>
     </div>
 
+=======
+        </div>
+    </div>
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 </section>
 
 @endsection

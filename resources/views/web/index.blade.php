@@ -1,4 +1,5 @@
 @extends('layouts.app')
+<<<<<<< HEAD
 @section('hide_header', true)
 @section('hide_footer', true)
 @section('content')
@@ -39,6 +40,10 @@
         </nav>
     </div>
 </header>
+=======
+@section('content')
+
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 
 <section class="hosting-section">
     <div class="container">
@@ -71,7 +76,11 @@
                     <ul class="plan-features">
                         <li><strong>RAM</strong> {{ $produto->ram ?? '-' }}</li>
                         <li><strong>Armazenamento</strong> {{ $produto->armazenamento ?? '-' }}</li>
+<<<<<<< HEAD
                         <li><strong>Processamento</strong> {{ $produto->processamento ?? '-' }}</li>
+=======
+                        <li><strong>Processamento</strong> {{ $produto->processamento ?? 'ilimitado' }}</li>
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
                         <li><strong>Bancos de dados</strong> {{ $produto->bancos_dados ?? '-' }}</li>
                         <li><strong>Domínios</strong> {{ $produto->dominios ?? '-' }}</li>
                     </ul>
@@ -86,7 +95,11 @@
                                 <span class="period">/mês</span>
                             </div>
                         </div>
+<<<<<<< HEAD
 <form method="POST" action="{{ route('checkout.redirect') }}" class="plan-checkout-form">
+=======
+<form method="POST" action="{{ route('cart.addProduct', $produto->id) }}" class="plan-checkout-form">
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
     @csrf
 
     <input type="hidden" name="items[0][plan_id]" value="{{ $produto->id }}">
@@ -113,6 +126,7 @@
     </div>
 </section>
 
+<<<<<<< HEAD
 <footer class="site-footer">
     <div class="container">
         <div class="footer-grid">
@@ -199,5 +213,7 @@
         </div>
     </div>
 </footer>
+=======
+>>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 
 @endsection

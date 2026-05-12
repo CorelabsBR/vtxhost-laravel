@@ -13,7 +13,7 @@
     background-color: #000;
     background-image: url('../img/index_fundo2.png');
     background-repeat: no-repeat;
-    animation: bg-zoom-slow 120s ease-in-out infinite;
+
 }
 
 /* Overlay escuro */
@@ -27,13 +27,6 @@
         linear-gradient(90deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%),
         radial-gradient(ellipse 65% 55% at 50% -5%,  rgba(0,255,100,.1),  transparent 65%),
         radial-gradient(ellipse 40% 35% at 85% 80%,  rgba(0,255,100,.05), transparent 65%);
-}
-
-/* Animação de fundo */
-@keyframes bg-zoom-slow {
-    0%   { background-size: 110%; background-position: 50% 50%; }
-    35%  { background-size: 135%; background-position: 48% 52%; }
-    100% { background-size: 110%; background-position: 50% 50%; }
 }
 /* Container — padding lateral fluido, sem margin-top fixo */
 .hero > .container {

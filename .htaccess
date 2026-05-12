@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# força assets/public
+RewriteCond %{REQUEST_URI} !^/public/
+
+# se arquivo/pasta existir, serve normal
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# manda tudo pro public
+RewriteRule ^(.*)$ /public/$1 [L]
+
+# homepage
+RewriteRule ^$ public/ [L]
