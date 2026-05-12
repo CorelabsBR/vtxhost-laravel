@@ -6,19 +6,6 @@
                 <img src="{{ asset('img/logo_vtxhost.png') }}" alt="logo_vtxhost" id="logo_img">
             </a>
 
-<<<<<<< HEAD
-            <ul class="nav-links">
-                <li><a href="{{ url('/') }}">Início</a></li>
-                <li><a href="{{ url('/games') }}">Hospedagem de Jogos</a></li>
-                <li><a href="{{ url('/vps') }}">VPS</a></li>
-                <li><a href="{{ url('/web') }}">Hospedagem Web</a></li>
-            </ul>
-
-            <div class="nav-actions">
-                <span class="nav-area-note">Cliente?</span>
-                <a class="btn btn-ghost btn-sm" href="{{ url('/login') }}">Entrar</a>
-                <a class="btn btn-primary btn-sm" href="{{ url('/registro') }}">Criar conta</a>
-=======
             @php
                 $current = request()->path();
 
@@ -89,7 +76,6 @@
                         Criar conta
                     </a>
                 @endauth
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
             </div>
 
             <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -99,14 +85,6 @@
         </nav>
 
         <nav class="mobile-nav" id="mobile-nav">
-<<<<<<< HEAD
-            <a href="{{ url('/') }}">Início</a>
-            <a href="{{ url('/host') }}">Hospedagem de Jogos</a>
-            <a href="{{ url('/vps') }}">VPS</a>
-            <a href="{{ url('/web') }}">Hospedagem Web</a>
-            <a href="{{ url('/login') }}">Entrar</a>
-            <a href="{{ url('/registro') }}">Criar conta</a>
-=======
             <a
                 href="{{ url('/') }}"
                 class="{{ request()->is('/') ? 'active' : '/' }}"
@@ -148,7 +126,6 @@
                     Criar conta
                 </a>
             @endauth
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
         </nav>
     </div>
 </header>

@@ -16,10 +16,7 @@
     <link rel="stylesheet" href="{{ asset('css/web.css') }}">
     <link rel="stylesheet" href="{{ asset('css/register.css') }}">
     <link rel="stylesheet" href="{{ asset('css/cart.css') }}">
-<<<<<<< HEAD
-=======
     <link rel="stylesheet" href="{{ asset('css/vps.css') }}">
->>>>>>> e9adfd2 (feat: atualizações do vortex hosting)
 
 
     @stack('styles')
